@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1061859397943",
+    "project_id": "renterly-f3435",
+    "storage_bucket": "renterly-f3435.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061859397943:android:e4956c931bb22a4cf18ab2",
+        "android_client_info": {
+          "package_name": "com.example.saferent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz-UHMpvyFJnSYdpT7ANSlRcxzYVUMeZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

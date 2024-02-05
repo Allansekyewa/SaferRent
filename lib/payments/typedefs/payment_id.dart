@@ -1,0 +1,1 @@
+typedef PaymentId = String;
