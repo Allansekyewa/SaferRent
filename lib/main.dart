@@ -33,8 +33,6 @@ class SafeRents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Disable the debug
-      // banner in the top right corner
       debugShowCheckedModeBanner: false,
       // Define the app's theme
       theme: ThemeData(

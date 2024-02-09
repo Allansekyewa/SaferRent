@@ -8,12 +8,12 @@ import 'package:saferent/security/pinsentry/views/agent_enter_pin_view.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
 import 'package:saferent/shoppingCart/views/shopping_cart_view.dart';
 import 'package:saferent/state/auth/providers/auth_state_providers.dart';
+import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/log_out_dialog.dart';
 import 'package:saferent/views/tabs/home_view.dart';
 import 'package:saferent/views/tabs/search/search_view.dart';
 import 'package:saferent/views/tabs/users_posts/user_posts_view.dart';
-
 
 class PortalsMain extends ConsumerStatefulWidget {
   const PortalsMain({super.key});
@@ -29,6 +29,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.butttonColor,
           centerTitle: false,
           title: const Row(
             children: [

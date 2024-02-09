@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:saferent/admin/views/admin_screen.dart';
 import 'package:saferent/enums/date_sorting.dart';
 import 'package:saferent/shoppingCart/models/cart_items.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
@@ -12,9 +13,11 @@ import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/posts/providers/delete_post_provider.dart';
 import 'package:saferent/state/viewership/views_count_view.dart';
 import 'package:saferent/views/components/animations/small_error.dart';
+import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/components/constants/strings.dart';
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/delete_dialog.dart';
+import 'package:saferent/views/components/post/post_counts_view.dart';
 import 'package:saferent/views/components/post/post_date_view.dart';
 import 'package:saferent/views/components/post/post_display_message.dart';
 import 'package:saferent/views/components/post/post_image_or_video_file_view.dart';
@@ -57,15 +60,18 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
         title: const Text(
           'Book Quick For A Quick Tour',
           style: TextStyle(
               fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red),
         ),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
+          const SizedBox(
+            width: 10,
+          ),
           //share button is always present
           postWithFeedback.when(
             data: (postWithFeedback) {
@@ -90,7 +96,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
             loading: () {
               return const Center(
                 child: CupertinoActivityIndicator(
-                  color: Colors.red,
+                  color: Colors.green,
                   radius: 7,
                 ),
               );
@@ -230,9 +236,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
           return const SmallErrorAnimation();
         },
         loading: () {
-          return const CupertinoActivityIndicator(
-            color: Colors.red,
-          );
+          return const Text('');
         },
       ),
     );

@@ -1,7 +1,7 @@
 class CartItem {
-  final String description;
+  final String? description;
   final double amount;
-  final String thumbnail;
+  final String? thumbnail;
   final String postId;
 
   CartItem({
@@ -25,4 +25,19 @@ class CartItem {
         'thumbnail': thumbnail,
         'postId': postId,
       };
+
+  // Add copyWith method
+  CartItem copyWith({
+    String? description,
+    double? amount,
+    String? thumbnail,
+    String? postId,
+  }) {
+    return CartItem(
+      description: description ?? this.description,
+      amount: amount ?? this.amount,
+      thumbnail: thumbnail ?? this.thumbnail,
+      postId: postId ?? this.postId,
+    );
+  }
 }

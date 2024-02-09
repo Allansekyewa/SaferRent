@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:saferent/shoppingCart/models/cart.dart';
 import 'package:saferent/shoppingCart/models/cart_items.dart';
+import 'package:saferent/state/constants/firebase_collection_names.dart';
 
 final cartProvider =
     StateNotifierProvider<CartProvider, Cart>((ref) => CartProvider());
@@ -14,7 +16,8 @@ class CartProvider extends StateNotifier<Cart> {
   CartProvider() : super(const Cart(userId: '', items: [], frompostId: ''));
 
   void initialize(String userId, String frompostId) {
-    state = Cart(userId: userId, items: [], frompostId: frompostId);
+    // added const here wasnt here
+    state = Cart(userId: userId, items: const [], frompostId: frompostId);
   }
 
   double get totalPrice {
@@ -26,20 +29,49 @@ class CartProvider extends StateNotifier<Cart> {
   }
 
   Future<void> addCartItem(CartItem item) async {
-    state = Cart(
+    var postDoc = await _firestore
+        .collection(FirebaseCollectionName.posts)
+        .doc(item.postId)
+        .get();
+    var postData = postDoc.data();
+
+    if (postData != null) {
+      item = item.copyWith(
+        description: postData['description'],
+        thumbnail: postData['thumbnailUrl'],
+      );
+    }
+
+    // Check if the post is already in the cart
+    if (state.items.any((cartItem) => cartItem.postId == item.postId)) {
+      // Show a toast message
+      Fluttertoast.showToast(
+        msg: "Tour already booked",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        fontSize: 12,
+      );
+    } else {
+      state = Cart(
         userId: state.userId,
         items: List.from(state.items)..add(item),
-        frompostId: state.frompostId);
-    await _saveCart();
+        frompostId: state.frompostId,
+      );
+      await _saveCart();
+      Fluttertoast.showToast(
+          msg: "Tour Successfully Booked",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          fontSize: 12);
+    }
+
+    // Use the thumbnailProvider to get the thumbnail
   }
 
   Future<void> removeCartItem(String propertyId) async {
     List<CartItem> updatedItems = List.from(state.items);
-    print("Before removal: ${updatedItems.map((item) => item.postId)}");
 
     updatedItems.removeWhere((item) => item.postId == propertyId);
-
-    print("After removal: ${updatedItems.map((item) => item.postId)}");
 
     if (updatedItems.length < state.items.length) {
       state = Cart(
@@ -53,25 +85,23 @@ class CartProvider extends StateNotifier<Cart> {
   }
 
   Future<void> clearCart() async {
-    state = Cart(userId: state.userId, items: [], frompostId: state.frompostId);
+    state = Cart(
+        userId: state.userId, items: const [], frompostId: state.frompostId);
     await _saveCart();
   }
 
   Future<void> _saveCart() async {
     try {
-      if (state.userId == null || state.userId.isEmpty) {
-        // Handle the case where the user ID is null or empty
-        print("User ID is null or empty. Cart not saved.");
-        return; // or throw an exception, depending on your application logic
+      if (state.userId.isEmpty) {
+        return;
       }
 
       await _firestore
           .collection(_cartCollection)
           .doc(state.userId)
           .set(state.toJson());
-    } catch (e) {
-      print("Error saving cart: $e");
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   Future<void> loadCart(String userId) async {

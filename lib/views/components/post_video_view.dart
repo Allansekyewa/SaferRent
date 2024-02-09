@@ -80,14 +80,15 @@ class _PostVideoViewState extends State<PostVideoView> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
                     icon: Icon(
                       _controller.value.isPlaying
-                          ? CupertinoIcons.pause
-                          : CupertinoIcons.play_arrow,
-                      size: 30.0, // Adjust the size as needed.
+                          ? CupertinoIcons.pause_circle_fill
+                          : CupertinoIcons.play_circle_fill,
+                      size: 20.0, // Adjust the size as needed.
                       color: Colors.red, // Set the color to blue.
                     ),
                     onPressed: () {
@@ -98,31 +99,36 @@ class _PostVideoViewState extends State<PostVideoView> {
                       });
                     },
                   ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      trackHeight: 1, // Adjust the thickness as needed.
-                      thumbShape:
-                          const RoundSliderThumbShape(enabledThumbRadius: 5.0),
-                      thumbColor: Colors.red,
-                      // Adjust the size as needed.
-                    ),
-                    child: Slider(
-                      value: _controller.value.position.inSeconds.toDouble(),
-                      min: 0.0,
-                      max: _controller.value.duration.inSeconds.toDouble(),
-                      onChanged: (double value) {
-                        setState(() {
-                          _controller.seekTo(Duration(seconds: value.toInt()));
-                        });
-                      },
+                  const SizedBox(width: 1),
+                  Expanded(
+                    child: SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        trackHeight: 1, // Adjust the thickness as needed.
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 8.0),
+                        thumbColor: Colors.green,
+                        // Adjust the size as needed.
+                      ),
+                      child: Slider(
+                        value: _controller.value.position.inSeconds.toDouble(),
+                        min: 0.0,
+                        max: _controller.value.duration.inSeconds.toDouble(),
+                        onChanged: (double value) {
+                          setState(() {
+                            _controller
+                                .seekTo(Duration(seconds: value.toInt()));
+                          });
+                        },
+                      ),
                     ),
                   ),
+                  const SizedBox(width: 1),
                   Text(
                     '${formatDuration(_controller.value.position)} / ${formatDuration(_controller.value.duration)}',
                     style: const TextStyle(
-                        color: Colors.red,
-                        fontSize: 12), // Set the color to red.
+                        color: Colors.red, fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(width: 20),
                 ],
               ),
             ),

@@ -8,7 +8,8 @@ enum LottieAnimation {
   paymentfailed(name: 'paymentfailed'),
   realestate(name: 'realestate'),
   trying(name: 'trying'),
-  nocart(name: 'emptycart');
+  nocart(name: 'emptycart'),
+  addedtocart(name: 'addedtocart');
 
   final String name;
   const LottieAnimation({required this.name});

@@ -5,7 +5,6 @@ import 'package:saferent/payments/model/mtn/request_api_mtn.dart';
 import 'package:saferent/shoppingCart/providers/cart_total_price_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
 
-
 class PaymentPage extends ConsumerStatefulWidget {
   const PaymentPage({super.key});
 
@@ -31,6 +30,18 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
   String phoneNumber = '';
   bool showWelcomeText = true;
 
+  @override
+  void initState() {
+    super.initState();
+    phoneControler.addListener(() {
+      if (phoneControler.text.isNotEmpty) {
+        setState(() {
+          phoneError = "";
+        });
+      }
+    });
+  }
+
   void selectPaymentMethod(String method) {
     setState(() {
       selectedPaymentMethod = method;
@@ -39,6 +50,12 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
   }
 
   void makePayment() {
+    if (phoneControler.text.isEmpty) {
+      setState(() {
+        phoneError = "Please Enter a Phone Number(Billing Number)";
+      });
+      return;
+    }
     if (selectedPaymentMethod == "MTN MoMo") {
       // Implement MTN Money payment logic here
       initiateMTNPayment(
@@ -90,7 +107,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                 )),
             TextButton(
                 child: const Text("Confirm",
-                    style: TextStyle(color: Colors.green)),
+                    style: TextStyle(color: Colors.black)),
                 onPressed: () async {
                   //TODO Implement after payment
                   //inital payment and api processing
@@ -120,7 +137,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                 ? "You paid SafeRents $amountToPay using $selectedPaymentMethod. A Receipt Has Been Sent To You For More Guidannce For Querries call 0761439068 !Thanks"
                 : "Payment using $selectedPaymentMethod failed. Please try again with another alternatve payment method ",
             style: const TextStyle(
-              fontSize: 10.0,
+              fontSize: 10,
             ),
           ),
         );
@@ -131,6 +148,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     final totalPrice = ref.watch(totalPriceProvider);
+    amountToPay = totalPrice;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -223,26 +241,30 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                 ),
                                 TextField(
                                   controller: phoneControler,
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: "Enter Number",
-                                    labelStyle: TextStyle(fontSize: 8),
+                                    errorText: phoneError.isNotEmpty
+                                        ? phoneError
+                                        : null,
+                                    labelStyle: const TextStyle(fontSize: 8),
                                     hintText: "Enter  Mobile Money Number",
-                                    hintStyle: TextStyle(
+                                    hintStyle: const TextStyle(
                                       fontSize: 8,
                                     ),
-                                    border: OutlineInputBorder(
+                                    border: const OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
                                       ),
                                     ),
                                   ),
+                                  keyboardType: TextInputType.phone,
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.pink,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: TextButton(
@@ -254,7 +276,8 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                     ),
                                     child: Text(
                                       'Pay 💵 ${totalPrice.toStringAsFixed(0)} Ugx',
-                                      style: const TextStyle(fontSize: 15),
+                                      style: const TextStyle(
+                                          fontSize: 12, color: Colors.red),
                                     ),
                                   ),
                                 )

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/payments/view/payment_view.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
+import 'package:saferent/views/components/animations/added_to_cart.dart';
 import 'package:saferent/views/components/animations/no_cart_animation_view.dart';
+import 'package:saferent/views/components/constants/app_colors.dart';
 
 class CartViewPage extends ConsumerWidget {
   const CartViewPage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class CartViewPage extends ConsumerWidget {
           'SafeRents Tours Basket',
           style: TextStyle(fontSize: 12, color: Colors.red),
         ),
+        centerTitle: true,
       ),
       body: cart.items.isEmpty
           ? const Center(
@@ -29,42 +32,53 @@ class CartViewPage extends ConsumerWidget {
                     itemCount: cart.items.length,
                     itemBuilder: (context, index) {
                       final item = cart.items[index];
-                      return ListTile(
-                        leading: Container(
-                            width: 50, child: Image.network(item.thumbnail)),
-                        title: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                item.description,
-                                style: const TextStyle(fontSize: 10),
-                              ),
-                            ),
-                          ],
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Ugx ${item.amount.toStringAsFixed(0)}: Property Tour Fee',
-                              style: const TextStyle(
-                                  fontSize: 10, color: Colors.blue),
-                            ),
-                          ],
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(
-                            CupertinoIcons.minus_circled,
-                            size: 15,
-                            color: Colors.red,
+                      return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
-                          onPressed: () {
-                            ref
-                                .read(cartProvider.notifier)
-                                .removeCartItem(item.postId);
-                          },
-                        ),
-                      );
+                          color: AppColors.butttonColor,
+                          child: ListTile(
+                            leading: Container(
+                              height: 50,
+                              width: 50,
+                              child: const AddedToCart(),
+                            ),
+                            title: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    item.description!,
+                                    style: const TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ugx ${item.amount.toStringAsFixed(0)}: Property Tour Fee',
+                                  style: const TextStyle(
+                                      fontSize: 10, color: Colors.red),
+                                ),
+                              ],
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(
+                                CupertinoIcons.delete_solid,
+                                size: 15,
+                                color: Colors.purple,
+                              ),
+                              onPressed: () {
+                                ref
+                                    .read(cartProvider.notifier)
+                                    .removeCartItem(item.postId);
+                              },
+                            ),
+                          ));
                     },
                   ),
                 ),
@@ -80,18 +94,21 @@ class CartViewPage extends ConsumerWidget {
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: TextButton(
+                          child: TextButton.icon(
                             onPressed: () {
                               ref
                                   .read(cartProvider.notifier)
                                   .clearCart(); // Clear cart functionality
                             },
-                            child: const Text(
+                            icon: const Icon(
+                              CupertinoIcons.cart_fill_badge_minus,
+                              color: Colors.yellow,
+                              size: 18,
+                            ),
+                            label: const Text(
                               'Clear Cart',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style:
+                                  TextStyle(fontSize: 10, color: Colors.black),
                             ),
                           ),
                         ),
@@ -101,13 +118,14 @@ class CartViewPage extends ConsumerWidget {
                         child: Container(
                           padding: const EdgeInsets.all(12.0),
                           decoration: BoxDecoration(
-                            color: Colors.greenAccent,
+                            color: AppColors.butttonColor,
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Text(
                             'Total: Ugx ${cart.totalPrice.toStringAsFixed(0)}/=',
                             style: const TextStyle(
                               fontSize: 12,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
@@ -120,7 +138,7 @@ class CartViewPage extends ConsumerWidget {
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: TextButton(
+                          child: TextButton.icon(
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -129,12 +147,14 @@ class CartViewPage extends ConsumerWidget {
                                 ),
                               );
                             },
-                            child: const Text(
+                            icon: const Icon(
+                              Icons.payments_outlined,
+                              size: 14,
+                              color: Colors.purple,
+                            ),
+                            label: const Text(
                               'Proceed to Payments',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
-                              ),
+                              style: TextStyle(fontSize: 10),
                             ),
                           ),
                         ),
