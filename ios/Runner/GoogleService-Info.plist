@@ -2,18 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-     <key>CLIENT_ID</key>
-	 <string>1061859397943-adh988gubqrrko94levkd5o67etiff9.apps.googleusercontent.com</string>
+	<key>CLIENT_ID</key>
+	<string>1061859397943-adh988gubqrrko94levkdk5o67etiff9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1061859397943-adh988gubqrrko94levkdk5o67etiff9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1061859397943-6tefderahrgrq6gs8icp2k3s47c9rrk9.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDMEweJnYbZ4fvt3SjxU1EkAFHtA1vtUc4</string>
 	<key>GCM_SENDER_ID</key>
 	<string>1061859397943</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1061859397943-adh988gubqrrko94levk5o67etiff9</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>.apps.googleusercontent.com</string>
 	<key>PLIST_VERSION</key>
-	<string>1061859397943-6tefderahrgrq6gs8icp2k3s47c9rrk9</string>
+	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.saferent</string>
 	<key>PROJECT_ID</key>

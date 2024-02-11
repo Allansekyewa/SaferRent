@@ -13,6 +13,7 @@ import 'package:saferent/state/post_settings/providers/post_settings_provider.da
 import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/components/post/thumbnail_view.dart';
 import 'package:saferent/views/constants/strings.dart';
+import 'package:saferent/views/tabs/users_posts/user_posts_view.dart';
 
 class CreateNewPost extends StatefulHookConsumerWidget {
   final File fileToPost;

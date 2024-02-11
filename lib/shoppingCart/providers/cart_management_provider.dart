@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:saferent/shoppingCart/models/cart.dart';
 import 'package:saferent/shoppingCart/models/cart_items.dart';
 import 'package:saferent/state/constants/firebase_collection_names.dart';
+import 'package:collection/collection.dart'; // Import for firstWhereOrNull
 
 final cartProvider =
     StateNotifierProvider<CartProvider, Cart>((ref) => CartProvider());
 
 class CartProvider extends StateNotifier<Cart> {
-  final _firestore = FirebaseFirestore.instance;
-  final _cartCollection = 'cart';
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final String _cartCollection = 'cart';
+  final List<CartItem> _removedItems = []; // Store removed items temporarily
 
   CartProvider() : super(const Cart(userId: '', items: [], frompostId: ''));
 
   void initialize(String userId, String frompostId) {
-    // added const here wasnt here
     state = Cart(userId: userId, items: const [], frompostId: frompostId);
   }
 
@@ -42,34 +42,29 @@ class CartProvider extends StateNotifier<Cart> {
       );
     }
 
-    // Check if the post is already in the cart
     if (state.items.any((cartItem) => cartItem.postId == item.postId)) {
-      // Show a toast message
-      Fluttertoast.showToast(
-        msg: "Tour already booked",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        fontSize: 12,
-      );
+      _showToastMessage("Tour already booked");
     } else {
       state = Cart(
         userId: state.userId,
-        items: List.from(state.items)..add(item),
+        items: List.of(state.items)..add(item),
         frompostId: state.frompostId,
       );
       await _saveCart();
-      Fluttertoast.showToast(
-          msg: "Tour Successfully Booked",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          fontSize: 12);
+      _showToastMessage("Tour Successfully Booked");
     }
-
-    // Use the thumbnailProvider to get the thumbnail
   }
 
   Future<void> removeCartItem(String propertyId) async {
-    List<CartItem> updatedItems = List.from(state.items);
+    // Find the item to remove
+    CartItem? removedItem =
+        state.items.firstWhereOrNull((item) => item.postId == propertyId);
+
+    if (removedItem != null) {
+      _removedItems.add(removedItem); // Store removed item
+    }
+
+    List<CartItem> updatedItems = List.of(state.items);
 
     updatedItems.removeWhere((item) => item.postId == propertyId);
 
@@ -78,6 +73,20 @@ class CartProvider extends StateNotifier<Cart> {
         userId: state.userId,
         frompostId: state.frompostId,
         items: updatedItems,
+      );
+
+      await _saveCart();
+    }
+  }
+
+  Future<void> reverseLastRemovedItem() async {
+    if (_removedItems.isNotEmpty) {
+      CartItem lastRemovedItem = _removedItems.removeLast();
+
+      state = Cart(
+        userId: state.userId,
+        frompostId: state.frompostId,
+        items: List.of(state.items)..add(lastRemovedItem),
       );
 
       await _saveCart();
@@ -100,12 +109,26 @@ class CartProvider extends StateNotifier<Cart> {
           .collection(_cartCollection)
           .doc(state.userId)
           .set(state.toJson());
-      // ignore: empty_catches
-    } catch (e) {}
+    } catch (e) {
+      // Handle error here or provide feedback to the user
+    }
   }
 
   Future<void> loadCart(String userId) async {
-    var doc = await _firestore.collection(_cartCollection).doc(userId).get();
-    state = Cart.fromJson(doc.data()!);
+    try {
+      var doc = await _firestore.collection(_cartCollection).doc(userId).get();
+      state = Cart.fromJson(doc.data()!);
+    } catch (e) {
+      // Handle error here or provide feedback to the user
+    }
+  }
+
+  void _showToastMessage(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      fontSize: 12,
+    );
   }
 }

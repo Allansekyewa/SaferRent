@@ -21,6 +21,18 @@ class CartViewPage extends ConsumerWidget {
           style: TextStyle(fontSize: 12, color: Colors.red),
         ),
         centerTitle: true,
+        actions: [
+          if (cart.items.isNotEmpty) // Conditionally show refresh icon
+            IconButton(
+                onPressed: () {
+                  ref.read(cartProvider.notifier).reverseLastRemovedItem();
+                },
+                icon: const Icon(
+                  CupertinoIcons.refresh_circled,
+                  size: 18,
+                  color: Colors.red,
+                ))
+        ],
       ),
       body: cart.items.isEmpty
           ? const Center(

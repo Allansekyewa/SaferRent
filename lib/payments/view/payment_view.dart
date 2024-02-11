@@ -33,20 +33,26 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
   @override
   void initState() {
     super.initState();
-    phoneControler.addListener(() {
-      if (phoneControler.text.isNotEmpty) {
-        setState(() {
-          phoneError = "";
-        });
-      }
-    });
+    phoneControler.addListener(
+      () {
+        if (phoneControler.text.isNotEmpty) {
+          setState(
+            () {
+              phoneError = "";
+            },
+          );
+        }
+      },
+    );
   }
 
   void selectPaymentMethod(String method) {
-    setState(() {
-      selectedPaymentMethod = method;
-      showWelcomeText = false;
-    });
+    setState(
+      () {
+        selectedPaymentMethod = method;
+        showWelcomeText = false;
+      },
+    );
   }
 
   void makePayment() {
@@ -64,14 +70,18 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
         'your_external_id',
         'just pay',
         'payment pls',
-      ).then((paymentResult) {
-        showPaymentConfirmationDialog(paymentResult);
-      });
+      ).then(
+        (paymentResult) {
+          showPaymentConfirmationDialog(paymentResult);
+        },
+      );
     } else if (selectedPaymentMethod == "Airtel Money") {
       // Implement Airtel Money payment logic here
-      initiateAirtelPayment(amountToPay, phoneNumber).then((paymentResult) {
-        showPaymentConfirmationDialog(paymentResult);
-      });
+      initiateAirtelPayment(amountToPay, phoneNumber).then(
+        (paymentResult) {
+          showPaymentConfirmationDialog(paymentResult);
+        },
+      );
     } else {
       showPaymentResultDialog("Invalid payment method selected");
     }
@@ -97,22 +107,24 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
           ),
           actions: [
             TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  phoneControler.clear();
-                },
-                child: const Text(
-                  'Cancel',
-                  style: TextStyle(fontSize: 10),
-                )),
+              onPressed: () {
+                Navigator.pop(context);
+                phoneControler.clear();
+              },
+              child: const Text(
+                'Cancel',
+                style: TextStyle(fontSize: 10),
+              ),
+            ),
             TextButton(
-                child: const Text("Confirm",
-                    style: TextStyle(color: Colors.black)),
-                onPressed: () async {
-                  //TODO Implement after payment
-                  //inital payment and api processing
-                  //reciept generation to reciept tab
-                })
+              child:
+                  const Text("Confirm", style: TextStyle(color: Colors.black)),
+              onPressed: () async {
+                //TODO Implement after payment
+                //inital payment and api processing
+                //reciept generation to reciept tab
+              },
+            )
           ],
         );
       },
@@ -151,9 +163,9 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
     amountToPay = totalPrice;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white70,
         appBar: AppBar(
-          backgroundColor: AppColors.butttonColor,
+          backgroundColor: Colors.yellow,
           title: const Text(
             "Make Payments",
             style: TextStyle(fontSize: 15.0, color: Colors.red),
@@ -165,7 +177,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
             child: SingleChildScrollView(
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.purple),
                   color: AppColors.butttonColor,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -190,9 +202,10 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                       DropdownButton<String>(
                         borderRadius: BorderRadius.circular(20),
                         value: selectedPaymentMethod,
-                        items: ["", "MTN MoMo", "Airtel Money"].map((method) {
-                          if (method == '') {
-                            return DropdownMenuItem(
+                        items: ["", "MTN MoMo", "Airtel Money"].map(
+                          (method) {
+                            if (method == '') {
+                              return DropdownMenuItem(
                                 value: method,
                                 child: Text(
                                   method.isNotEmpty
@@ -201,25 +214,29 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                   style: const TextStyle(
                                     fontSize: 10.0,
                                   ),
-                                ));
-                          } else {
-                            return DropdownMenuItem(
-                              value: method,
-                              child: Row(children: [
-                                method == "MTN MoMo" ? mtnLogo : airtelLogo,
-                                const SizedBox(width: 10),
-                                Text(
-                                  method.isNotEmpty
-                                      ? method
-                                      : "Select Payment Method",
-                                  style: const TextStyle(
-                                    fontSize: 10.0,
-                                  ),
-                                )
-                              ]),
-                            );
-                          }
-                        }).toList(),
+                                ),
+                              );
+                            } else {
+                              return DropdownMenuItem(
+                                value: method,
+                                child: Row(
+                                  children: [
+                                    method == "MTN MoMo" ? mtnLogo : airtelLogo,
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      method.isNotEmpty
+                                          ? method
+                                          : "Select Payment Method",
+                                      style: const TextStyle(
+                                        fontSize: 10.0,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                        ).toList(),
                         onChanged: (String? method) {
                           selectPaymentMethod(method!);
                         },
@@ -264,7 +281,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.white30,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: TextButton(

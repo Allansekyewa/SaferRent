@@ -81,9 +81,9 @@ class _RecieptsViewState extends State<RecieptsView> {
                         String serviceProvider =
                             data['serviceProvider'] ?? "N/A";
                         String paymentFor = data['paymentFor'] ?? "N/A";
-                        String onPostId = data['onPostId'] ?? "N/A";
+
                         double amount = data['amount'] ?? 0.0;
-                        String fromUserId = data['fromUserId'] ?? "N/A";
+
                         String clientsName = data['clientsName'] ?? "N/A";
                         String reason = data['reason'] ?? "N/A";
                         String paymentDate = data['paidAt'] != null
@@ -128,11 +128,7 @@ class _RecieptsViewState extends State<RecieptsView> {
                                         style: const TextStyle(fontSize: 10)),
                                     Text('Payment For: $paymentFor',
                                         style: const TextStyle(fontSize: 10)),
-                                    Text('Post ID: $onPostId',
-                                        style: const TextStyle(fontSize: 10)),
                                     Text('Amount: $amount',
-                                        style: const TextStyle(fontSize: 10)),
-                                    Text('User ID: $fromUserId',
                                         style: const TextStyle(fontSize: 10)),
                                     Text('Client Name: $clientsName',
                                         style: const TextStyle(fontSize: 10)),

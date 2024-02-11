@@ -12,7 +12,7 @@ class PostsGridView extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(3.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, mainAxisSpacing: 3.0, crossAxisSpacing: 3.0),
+          crossAxisCount: 2, mainAxisSpacing: 0.0, crossAxisSpacing: 0.0),
       itemCount: posts.length,
       itemBuilder: (context, index) {
         final post = posts.elementAt(index);
