@@ -5,8 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/admin/views/agemts_forrms_results.dart';
 import 'package:saferent/admin/views/property_sales_results.dart';
 import 'package:saferent/admin/views/verified_agents%20_view.dart';
-import 'package:saferent/moreServices/views/maids_view.dart';
-import 'package:saferent/moreServices/views/movers.dart';
+
 import 'package:saferent/propertySales/providers/submit_passcode_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/verify_phone_number_provider.dart';
@@ -417,39 +416,6 @@ class AdminScreen extends HookConsumerWidget {
               const Text(
                 'CLick on one of the fields below to enter data ',
                 style: TextStyle(fontSize: 10),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const MoversRegPage(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'Movers/Shifters',
-                      style: TextStyle(fontSize: 10, color: Colors.blue),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const MaidsRegPage(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'House Maids',
-                      style: TextStyle(fontSize: 10, color: Colors.blue),
-                    ),
-                  ),
-                ],
               ),
               const Divider(
                 color: Colors.red,

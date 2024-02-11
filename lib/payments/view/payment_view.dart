@@ -165,7 +165,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
       child: Scaffold(
         backgroundColor: Colors.white70,
         appBar: AppBar(
-          backgroundColor: Colors.yellow,
+          backgroundColor: AppColors.butttonColor,
           title: const Text(
             "Make Payments",
             style: TextStyle(fontSize: 15.0, color: Colors.red),

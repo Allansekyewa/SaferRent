@@ -2,7 +2,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:saferent/moreServices/houseMaids/providers/extras_view.dart';
+
 import 'package:saferent/payments/view/reciept_view.dart';
 import 'package:saferent/security/pinsentry/views/agent_enter_pin_view.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
@@ -26,7 +26,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.butttonColor,
@@ -150,13 +150,6 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
                   size: 18,
                 ),
               ),
-              Tab(
-                icon: Icon(
-                  CupertinoIcons.slider_horizontal_3,
-                  color: Colors.red,
-                  size: 18,
-                ),
-              )
             ],
           ),
         ),
@@ -165,7 +158,6 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
             HomeView(),
             SearchView(),
             UserPostsView(),
-            ExtrasViewTab(),
           ],
         ),
       ),

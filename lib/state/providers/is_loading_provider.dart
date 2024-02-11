@@ -1,7 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:saferent/moreServices/houseMaids/providers/house_maid_provider.dart';
-import 'package:saferent/moreServices/movingServices/providers/submit_movers_form_provider.dart';
-import 'package:saferent/payments/providers/process_payment_provider.dart';
+
 import 'package:saferent/propertySales/providers/submit_passcode_provider.dart';
 import 'package:saferent/propertySales/providers/submit_prperty_sales_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
@@ -25,12 +23,12 @@ final isLoadingProvider = Provider<bool>(
     final isSubmittingAgentForm = ref.watch(submitAgentFormProvider);
     final isVerifyingAgent = ref.watch(verifyPhoneProvider);
     final isGeneratePin = ref.watch(generatePinProvider);
-    final isSubMovin = ref.watch(subitMoversFormProvider);
+
     final isSavingAdmin = ref.watch(verifyAdminProvider);
-    final isSavinMaid = ref.watch(submitMaidsProvider);
+
     final isSubmitingPasscode = ref.watch(submitPasscodeProvider);
     final isSubmitPropertySales = ref.watch(propertySalesProvider);
-    final issubmittingPaymentsdata = ref.watch(processPaymentProvider);
+
     final isSubReportData = ref.watch(submitReportProvider);
 
     return authState.isLoading ||
@@ -42,11 +40,8 @@ final isLoadingProvider = Provider<bool>(
         isVerifyingAgent ||
         isGeneratePin ||
         isSavingAdmin ||
-        isSubMovin ||
-        isSavinMaid ||
         isSubmitingPasscode ||
         isSubmitPropertySales ||
-        issubmittingPaymentsdata ||
         isSubReportData;
   },
 );

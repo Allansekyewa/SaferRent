@@ -13,9 +13,10 @@ class PostDateView extends StatelessWidget {
     ); // Use 'en_short' for English locale
 
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
+      padding: const EdgeInsets.only(left: 4.0),
       child: Text(
         formattedTimeAgo,
+        style: const TextStyle(fontSize: 12, color: Colors.blue),
       ),
     );
   }

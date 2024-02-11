@@ -22,7 +22,7 @@ class PostThumbNailView extends StatelessWidget {
     return GestureDetector(
       onTap: onTapped,
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(1.0),
         child: Container(
           height: 50, // Adjust the height as needed
           child: Column(
@@ -51,6 +51,7 @@ class PostThumbNailView extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.red,
                 ),
+                textAlign: TextAlign.right,
               ),
             ],
           ),
