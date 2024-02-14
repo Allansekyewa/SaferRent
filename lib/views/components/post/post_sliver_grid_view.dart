@@ -11,7 +11,7 @@ class PostSliverGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 0.0, crossAxisSpacing: 0.0),
+          crossAxisCount: 4, mainAxisSpacing: 3.0, crossAxisSpacing: 4.0),
       delegate: SliverChildBuilderDelegate(
         childCount: posts.length,
         (context, index) {

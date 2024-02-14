@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saferent/SplashPage/Splashs/text_splash.dart';
 import 'package:saferent/firebase_options.dart';
 import 'package:saferent/state/auth/providers/is_logged_in_provider.dart';
 import 'package:saferent/state/providers/is_loading_provider.dart';

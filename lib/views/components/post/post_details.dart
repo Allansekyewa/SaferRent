@@ -163,7 +163,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                       width: 10,
                     ),
                     TextButton.icon(
-                      onPressed: () {
+                      onPressed: () async {
                         final cartProvidr = ref.read(cartProvider.notifier);
                         final myItem = CartItem(
                           description: 'Tour',

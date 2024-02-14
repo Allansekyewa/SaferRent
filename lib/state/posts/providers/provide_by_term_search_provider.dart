@@ -17,13 +17,18 @@ final postsBysearchTermProvider =
       (snapshot) {
         final posts = snapshot.docs
             .map(
-              (doc) => Post(json: doc.data(), postId: doc.id),
-            )
+          (doc) => Post(json: doc.data(), postId: doc.id),
+        )
             .where(
-              (post) => post.description.toLowerCase().contains(
-                    searchTerm.toLowerCase(),
-                  ),
-            );
+          (post) {
+            final descriptionWords = post.description.toLowerCase().split(' ');
+            final searchWords = searchTerm.toLowerCase().split(' ');
+
+            // Check if all search words are present in the description
+            return searchWords.every((word) =>
+                descriptionWords.any((descWord) => descWord.startsWith(word)));
+          },
+        );
         controller.sink.add(posts);
       },
     );
