@@ -16,7 +16,7 @@ class Strings {
   static const surelyLogginOut = 'Are you sure you want to log out ?';
   static const cancel = 'Cancel';
   static const viewedTh = 'Green Flagged This';
-  static const check = 'Check Out This Portal';
+  static const check = 'Link Out This Saferent';
   static const delpO = 'Delete pOrtaL . ?';
 
   const Strings._();

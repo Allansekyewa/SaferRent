@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:saferent/admin/views/admin_screen.dart';
+
 import 'package:saferent/enums/date_sorting.dart';
 import 'package:saferent/shoppingCart/models/cart_items.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
@@ -65,7 +65,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
         title: const Text(
           'Book Quick For A Quick Tour',
           style: TextStyle(
-              fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red),
+              fontSize: 13, fontWeight: FontWeight.bold, color: Colors.orange),
         ),
         centerTitle: false,
         actions: [
@@ -84,9 +84,9 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                   );
                 },
                 icon: const Icon(
-                  Icons.share_outlined,
-                  size: 18,
-                  color: Colors.blue,
+                  CupertinoIcons.link,
+                  size: 20,
+                  color: Colors.purple,
                 ),
               );
             },
@@ -123,7 +123,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
               icon: const Icon(
                 CupertinoIcons.delete,
                 color: Colors.red,
-                size: 18,
+                size: 20,
               ),
             )
         ],
@@ -154,7 +154,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                           );
                         },
                         icon: const Icon(
-                          Icons.feedback_rounded,
+                          CupertinoIcons.mail_solid,
                           color: Colors.purple,
                           size: 14,
                         ),
@@ -175,7 +175,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                         cartProvidr.addCartItem(myItem);
                       },
                       icon: const Icon(
-                        CupertinoIcons.add_circled,
+                        CupertinoIcons.add_circled_solid,
                         size: 16,
                       ),
                       label: const Text(
@@ -184,7 +184,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                       ),
                     ),
 
-                    const Text("📞0761439068",
+                    const Text("📞 0761439068",
                         style: TextStyle(fontSize: 10, color: Colors.red))
                   ],
                 ),

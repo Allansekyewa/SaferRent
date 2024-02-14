@@ -10,9 +10,9 @@ class PostsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(2.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, mainAxisSpacing: 4.0, crossAxisSpacing: 4.0),
+          crossAxisCount: 4, mainAxisSpacing: 2.0, crossAxisSpacing: 2.0),
       itemCount: posts.length,
       itemBuilder: (context, index) {
         final post = posts.elementAt(index);
