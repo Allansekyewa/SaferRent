@@ -30,7 +30,10 @@ class UserPostsView extends ConsumerWidget {
               text: Strings.agentsNo,
             );
           } else {
-            return PostsGridView(posts: posts);
+            // Convert Iterable to List and sort
+            final sortedPosts = posts.toList()
+              ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+            return PostsGridView(posts: sortedPosts);
           }
         },
         loading: () => const CupertinoActivityIndicator(

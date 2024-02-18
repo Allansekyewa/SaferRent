@@ -55,7 +55,7 @@ class PostFeedbackView extends HookConsumerWidget {
 
               return RefreshIndicator(
                   child: ListView.builder(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     itemCount: feedback.length,
                     itemBuilder: (context, index) {
                       final feedbacks = feedback.elementAt(index);
@@ -118,6 +118,9 @@ class PostFeedbackView extends HookConsumerWidget {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            height: 10,
           )
         ],
       )),

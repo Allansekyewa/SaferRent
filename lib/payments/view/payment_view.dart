@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/payments/model/airtel/request_apis_airtel.dart';
 import 'package:saferent/payments/model/mtn/request_api_mtn.dart';
@@ -266,7 +267,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                     labelStyle: const TextStyle(fontSize: 8),
                                     hintText: "Enter  Mobile Money Number",
                                     hintStyle: const TextStyle(
-                                      fontSize: 8,
+                                      fontSize: 12,
                                     ),
                                     border: const OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
@@ -274,7 +275,10 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                       ),
                                     ),
                                   ),
-                                  keyboardType: TextInputType.phone,
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: <TextInputFormatter>[
+                                    FilteringTextInputFormatter.digitsOnly
+                                  ],
                                 ),
                                 const SizedBox(
                                   height: 10,

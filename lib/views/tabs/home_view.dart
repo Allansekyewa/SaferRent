@@ -28,8 +28,11 @@ class HomeView extends ConsumerWidget {
               text: Strings.noSafeRENTSYet,
             );
           } else {
+            // Convert Iterable to List and sort
+            final sortedPosts = posts.toList()
+              ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
             return PostsGridView(
-              posts: posts,
+              posts: sortedPosts,
             );
           }
         },

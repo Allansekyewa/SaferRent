@@ -31,7 +31,10 @@ class SearchGridView extends ConsumerWidget {
             text: Strings.noSearch,
           ));
         } else {
-          return PostSliverGridView(posts: posts);
+          // Convert Iterable to List and sort
+          final sortedPosts = posts.toList()
+            ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+          return PostSliverGridView(posts: sortedPosts);
         }
       },
       error: (error, stackTrace) {

@@ -32,7 +32,7 @@ class Strings {
   static const facebook = 'Facebook';
   static const agentsNo =
       'Verified Agents Content Page\nGet Verified To Access This Page';
-  static const noFeedYet = 'Be THe First To Comment';
+  static const noFeedYet = 'Be The First To Comment';
 
   const Strings._();
 }

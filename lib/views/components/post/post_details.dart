@@ -17,7 +17,7 @@ import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/components/constants/strings.dart';
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/delete_dialog.dart';
-import 'package:saferent/views/components/post/post_counts_view.dart';
+
 import 'package:saferent/views/components/post/post_date_view.dart';
 import 'package:saferent/views/components/post/post_display_message.dart';
 import 'package:saferent/views/components/post/post_image_or_video_file_view.dart';

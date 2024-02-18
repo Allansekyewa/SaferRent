@@ -23,7 +23,7 @@ class _TextSplashState extends State<TextSplash>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1), // Adjust duration as needed
+      duration: const Duration(seconds: 2), // Adjust duration as needed
     )..repeat(); // Repeats the animation indefinitely
   }
 
