@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/rent_colection/providers/sunmitTenant_provider.dart';
+import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';
 
 class TenantRegistrationPage extends HookConsumerWidget {
@@ -19,6 +20,7 @@ class TenantRegistrationPage extends HookConsumerWidget {
     final locController = useTextEditingController();
     final rentAmountController = useTextEditingController();
     return Scaffold(
+      backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
         title: const Text(
           'Tenant Management Form',

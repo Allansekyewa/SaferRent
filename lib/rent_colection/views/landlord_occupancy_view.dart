@@ -12,6 +12,25 @@ class LandLordOccupancy extends ConsumerStatefulWidget {
 class _LandLordOccupancyState extends ConsumerState<LandLordOccupancy> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+            child: Column(
+          children: [
+            Divider(
+              color: Colors.blue,
+            ),
+            Text(
+              "Occuapancy will help you in tracking the number of units you have in difffernt Locations More so the taken ones the enpty ones in real time",
+              style: TextStyle(fontSize: 11, color: Colors.red),
+            ),
+            Divider(
+              color: Colors.blue,
+            ),
+          ],
+        )),
+      ),
+    );
   }
 }

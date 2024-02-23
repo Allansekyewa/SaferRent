@@ -15,6 +15,7 @@ class _LandlordRegistrationPageState extends State<LandlordRegistrationPage> {
   final phoneNumberController = TextEditingController();
   final bankAccountController = TextEditingController();
   final locationController = TextEditingController();
+  final refIdController = TextEditingController();
 
   // Keep track of selected units
   final selectedUnits = <String>{};
@@ -116,6 +117,15 @@ class _LandlordRegistrationPageState extends State<LandlordRegistrationPage> {
                       controller: bankAccountController,
                       decoration: const InputDecoration(
                         labelText: 'Bank Account',
+                        labelStyle: TextStyle(fontSize: 12),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    TextField(
+                      controller: refIdController,
+                      decoration: const InputDecoration(
+                        labelText: 'Reference Id',
                         labelStyle: TextStyle(fontSize: 12),
                         border: OutlineInputBorder(),
                       ),

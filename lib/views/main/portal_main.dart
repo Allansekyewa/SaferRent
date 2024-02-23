@@ -60,7 +60,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
                   final cartProvder = ref.watch(cartProvider.notifier);
                   return Text(
                     cartProvder.badgeCount.toString(),
-                    style: const TextStyle(color: Colors.red, fontSize: 12),
+                    style: const TextStyle(color: Colors.black, fontSize: 12),
                   );
                 },
               ),
@@ -166,7 +166,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
                   'Pay & Collect Rent',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 15,
+                    fontSize: 13,
                   ),
                 ),
                 icon: const Icon(

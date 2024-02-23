@@ -53,7 +53,7 @@ class LoginPage extends ConsumerWidget {
                           'R',
                           style: TextStyle(
                               fontSize: 45,
-                              color: Colors.green,
+                              color: Colors.orange,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
