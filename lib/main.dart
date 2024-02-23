@@ -66,7 +66,7 @@ class SafeRents extends StatelessWidget {
           if (isLoggedIn) {
             return const PortalsMain();
           } else {
-            return const LoginPage();
+            return const PortalsMain();
           }
         },
       ),

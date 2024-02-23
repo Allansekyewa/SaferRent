@@ -19,7 +19,7 @@ extension Present<T> on AlertDialogModel<T> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: AppColors.butttonColor,
+            backgroundColor: Colors.orange,
             content: Text(
               message,
               style: const TextStyle(color: Colors.black, fontSize: 10),

@@ -10,7 +10,7 @@ import 'package:saferent/state/image_upload/models/thumbnail_request.dart';
 import 'package:saferent/state/image_upload/providers/image_uploader_provider.dart';
 import 'package:saferent/state/post_settings/models/post_settings.dart';
 import 'package:saferent/state/post_settings/providers/post_settings_provider.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
+
 import 'package:saferent/views/components/post/thumbnail_view.dart';
 import 'package:saferent/views/constants/strings.dart';
 
@@ -48,7 +48,6 @@ class _CreateNewPostState extends ConsumerState<CreateNewPost> {
       [postController],
     );
     return Scaffold(
-      backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
         title: const Text(
           'Upload to SafeRents',

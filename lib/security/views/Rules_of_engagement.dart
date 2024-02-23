@@ -9,6 +9,7 @@ class RulesAndEngagement extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         title: const Text(
           "Agent Guidelines for  SafeRents",
           style: TextStyle(

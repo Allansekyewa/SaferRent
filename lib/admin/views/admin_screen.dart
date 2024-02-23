@@ -2,16 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:saferent/admin/views/agemts_forrms_results.dart';
-import 'package:saferent/admin/views/property_sales_results.dart';
-import 'package:saferent/admin/views/verified_agents%20_view.dart';
 
-import 'package:saferent/propertySales/providers/submit_passcode_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/verify_phone_number_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';
-import 'package:saferent/views/main/general_reports/views/reports_admin_view.dart';
 
 class AdminScreen extends HookConsumerWidget {
   final GlobalKey<FormState> _agentFormKey = GlobalKey<FormState>();
@@ -34,79 +29,6 @@ class AdminScreen extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: AppColors.butttonColor,
-      appBar: AppBar(
-        title: const Row(
-          children: [
-            Text(
-              "control panel",
-              style: TextStyle(
-                fontSize: 10,
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
-            )
-          ],
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ReportsAdminView(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.feedback_outlined,
-                color: Colors.purple,
-                size: 16,
-              )),
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VerifiedAgentsview(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                CupertinoIcons.person_add,
-                size: 16,
-                color: Colors.blue,
-              )),
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AgentsResultView(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                CupertinoIcons.person_badge_minus,
-                color: Colors.red,
-                size: 16,
-              )),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PropertySalesView(),
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.sell_outlined,
-              color: Colors.green,
-              size: 16,
-            ),
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -383,31 +305,6 @@ class AdminScreen extends HookConsumerWidget {
                       return null; // Return null for no error
                     },
                   ),
-                ),
-              ),
-              ElevatedButton.icon(
-                onPressed: () async {
-                  if (_passCodeFormKey.currentState!.validate()) {
-                    final isSave = await ref
-                        .read(submitPasscodeProvider.notifier)
-                        .submitpasscode(
-                          passCode: passcodeController.text,
-                          createdAt: DateTime.timestamp(),
-                        );
-                    if (isSave) {
-                      passcodeController.clear();
-                      dismissKeyboard();
-                    }
-                  }
-                },
-                icon: const Icon(
-                  Icons.send,
-                  color: Colors.green,
-                  size: 18,
-                ),
-                label: const Text(
-                  'save passcode',
-                  style: TextStyle(fontSize: 10),
                 ),
               ),
               const Divider(

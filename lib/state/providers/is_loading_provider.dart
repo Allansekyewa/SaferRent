@@ -1,7 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:saferent/rent_colection/providers/sunmitTenant_provider.dart';
 
-import 'package:saferent/propertySales/providers/submit_passcode_provider.dart';
-import 'package:saferent/propertySales/providers/submit_prperty_sales_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/submit_agent_form_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/verify_phone_number_provider.dart';
@@ -11,7 +10,6 @@ import 'package:saferent/state/feedback/providers/delete_feedback_provider.dart'
 import 'package:saferent/state/feedback/providers/send_feedback_provider.dart';
 import 'package:saferent/state/image_upload/providers/image_uploader_provider.dart';
 import 'package:saferent/state/posts/providers/delete_post_provider.dart';
-import 'package:saferent/views/main/general_reports/providers/general_report_provider.dart';
 
 final isLoadingProvider = Provider<bool>(
   (ref) {
@@ -23,13 +21,8 @@ final isLoadingProvider = Provider<bool>(
     final isSubmittingAgentForm = ref.watch(submitAgentFormProvider);
     final isVerifyingAgent = ref.watch(verifyPhoneProvider);
     final isGeneratePin = ref.watch(generatePinProvider);
-
+    final isSubmitTenant = ref.watch(submitTenantProvider);
     final isSavingAdmin = ref.watch(verifyAdminProvider);
-
-    final isSubmitingPasscode = ref.watch(submitPasscodeProvider);
-    final isSubmitPropertySales = ref.watch(propertySalesProvider);
-
-    final isSubReportData = ref.watch(submitReportProvider);
 
     return authState.isLoading ||
         isUploadingImage ||
@@ -40,8 +33,6 @@ final isLoadingProvider = Provider<bool>(
         isVerifyingAgent ||
         isGeneratePin ||
         isSavingAdmin ||
-        isSubmitingPasscode ||
-        isSubmitPropertySales ||
-        isSubReportData;
+        isSubmitTenant;
   },
 );

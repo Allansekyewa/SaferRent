@@ -89,7 +89,9 @@ class _PostVideoViewState extends State<PostVideoView> {
                           ? CupertinoIcons.pause_circle_fill
                           : CupertinoIcons.play_circle_fill,
                       size: 20.0, // Adjust the size as needed.
-                      color: Colors.red, // Set the color to blue.
+                      color: _controller.value.isPlaying
+                          ? Colors.green
+                          : Colors.red, // Set the color to blue.
                     ),
                     onPressed: () {
                       setState(() {
@@ -105,8 +107,8 @@ class _PostVideoViewState extends State<PostVideoView> {
                       data: SliderTheme.of(context).copyWith(
                         trackHeight: 1, // Adjust the thickness as needed.
                         thumbShape: const RoundSliderThumbShape(
-                            enabledThumbRadius: 8.0),
-                        thumbColor: Colors.green,
+                            enabledThumbRadius: 6.0),
+                        thumbColor: Colors.red,
                         // Adjust the size as needed.
                       ),
                       child: Slider(
@@ -126,7 +128,8 @@ class _PostVideoViewState extends State<PostVideoView> {
                   Text(
                     '${formatDuration(_controller.value.position)} / ${formatDuration(_controller.value.duration)}',
                     style: const TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold),
+                      color: Colors.red,
+                    ),
                   ),
                   const SizedBox(width: 20),
                 ],

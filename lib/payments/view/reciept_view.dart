@@ -28,7 +28,7 @@ class _RecieptsViewState extends State<RecieptsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.orange,
         title: const Text(
           'Your Receipts',
           style: TextStyle(fontSize: 14, color: Colors.black),

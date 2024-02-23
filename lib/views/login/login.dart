@@ -71,7 +71,7 @@ class LoginPage extends ConsumerWidget {
                     const Center(
                       child: Icon(
                         CupertinoIcons.lock_circle_fill,
-                        color: Colors.black54,
+                        color: Colors.orange,
                         size: 70,
                       ),
                     ),
@@ -110,7 +110,7 @@ class LoginPage extends ConsumerWidget {
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: AppColors.butttonColor,
+                          backgroundColor: Colors.orange,
                           foregroundColor: Colors.black),
                       onPressed: () {
                         ref.read(authStateProvider.notifier).loginWithGoogle();
@@ -122,7 +122,7 @@ class LoginPage extends ConsumerWidget {
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: AppColors.butttonColor,
+                          backgroundColor: Colors.orange,
                           foregroundColor: Colors.black),
                       onPressed: () {
                         ref.read(authStateProvider.notifier).loginWithGoogle();

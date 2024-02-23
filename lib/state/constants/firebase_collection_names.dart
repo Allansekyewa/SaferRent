@@ -12,12 +12,11 @@ class FirebaseCollectionName {
   static const reciepts = 'reciepts';
   static const verified = 'Verified_Agents';
   static const verifyad = 'Verified_admin';
-  static const cleanSer = 'Cleaning_services';
-  static const houseMai = 'house_maids';
-  static const movers = 'Movers';
-  static const propertySales = 'property_sales';
+  static const tenantReg = 'Tenants';
+  static const landLordReg = 'LandLords';
+
   static const passco = 'pass_codes';
-  static const reports = 'reports';
+
   static const cart = 'carts';
   const FirebaseCollectionName._();
 }

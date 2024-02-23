@@ -15,6 +15,7 @@ class CartViewPage extends ConsumerWidget {
     final cart = ref.watch(cartProvider);
 
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
         title: const Text(
           'SafeRents Tours Basket',
@@ -147,7 +148,7 @@ class CartViewPage extends ConsumerWidget {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.orange,
+                            color: Colors.green,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: TextButton.icon(

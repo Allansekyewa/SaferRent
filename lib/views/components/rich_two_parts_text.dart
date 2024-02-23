@@ -11,7 +11,7 @@ class RichTwoPartsText extends StatelessWidget {
     return RichText(
       text: TextSpan(
           style:
-              const TextStyle(color: Colors.black, height: 1.5, fontSize: 10),
+              const TextStyle(color: Colors.black, height: 1.2, fontSize: 11),
           children: [
             TextSpan(
                 text: leftPart,

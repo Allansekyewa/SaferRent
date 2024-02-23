@@ -81,7 +81,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
       );
     } else {
       setState(() {
-        _errorText = "Please enter a Verified phone number to proceed.";
+        _errorText = "Enter A Verified Saferents Ref Id To Proceed.";
       });
     }
   }
@@ -89,10 +89,12 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         title: const Text(
-          "Enter Verified Phone Number To Access\nIf You Dont Have It Fill Our Form Below",
-          style: TextStyle(fontSize: 8, color: Colors.red),
+          "Enter Verified SAfeRents Ref Id For Access",
+          style: TextStyle(fontSize: 12, color: Colors.black),
         ),
       ),
       body: Center(
@@ -119,7 +121,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                       ),
                       child: const Text(
                         "⚠️ Warning: Agent Authentication Alert ⚠️\n\n"
-                        "To ensure the security of your agent account, please only enter the valid passcode associated with your agency verificatio when prompted. SafeRents will authenticate your identity through this passcode.\n\n"
+                        "To ensure the security of your agent account, please only enter the valid ref id associated with your agency verification when prompted. SafeRents will authenticate your identity through ref id.\n\n"
                         "🔐 Agent Security Notice:\n"
                         "This authentication process is crucial for safeguarding your account. Do not exceed three attempts, as multiple unsuccessful tries may lead to the revocation of your access to the Portal.\n\n"
                         "🚨 Caution: Protect Your PassCode!\n"
@@ -147,7 +149,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        labelText: "Enter Verified PassCode",
+                        labelText: "Enter Verified Ref Id",
                         labelStyle: const TextStyle(fontSize: 10),
                         suffixIcon: IconButton(
                           onPressed: () {

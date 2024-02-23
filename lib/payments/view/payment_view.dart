@@ -164,12 +164,13 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
     amountToPay = totalPrice;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.orange,
         appBar: AppBar(
           backgroundColor: AppColors.butttonColor,
           title: const Text(
             "Make Payments",
-            style: TextStyle(fontSize: 15.0, color: Colors.red),
+            style: TextStyle(fontSize: 15.0, color: Colors.black),
+            textAlign: TextAlign.center,
           ),
         ),
         body: Center(

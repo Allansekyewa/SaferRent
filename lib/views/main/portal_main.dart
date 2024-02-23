@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:saferent/payments/view/reciept_view.dart';
+import 'package:saferent/rent_colection/views/reg_screen.dart';
 import 'package:saferent/security/pinsentry/views/agent_enter_pin_view.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
 import 'package:saferent/shoppingCart/views/shopping_cart_view.dart';
 import 'package:saferent/state/auth/providers/auth_state_providers.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
+
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/log_out_dialog.dart';
 import 'package:saferent/views/tabs/home_view.dart';
 import 'package:saferent/views/tabs/search/search_view.dart';
-import 'package:saferent/views/tabs/users_posts/user_posts_view.dart';
 
 class PortalsMain extends ConsumerStatefulWidget {
-  const PortalsMain({super.key});
+  const PortalsMain({Key? key}) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _PortalsMainState();
@@ -26,10 +26,10 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.butttonColor,
+          backgroundColor: Colors.orange,
           centerTitle: false,
           title: const Row(
             children: [
@@ -143,13 +143,6 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
                   size: 18,
                 ),
               ),
-              Tab(
-                icon: Icon(
-                  CupertinoIcons.person_2,
-                  color: Colors.black,
-                  size: 18,
-                ),
-              ),
             ],
           ),
         ),
@@ -157,8 +150,32 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
           children: [
             HomeView(),
             SearchView(),
-            UserPostsView(),
           ],
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.orange,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Center(
+              child: TextButton.icon(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const RentRegScreen()));
+                },
+                label: const Text(
+                  'Pay & Collect Rent',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.payments_sharp,
+                  color: Color.fromARGB(255, 185, 11, 185),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

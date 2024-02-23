@@ -62,10 +62,11 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
     return Scaffold(
       backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         title: const Text(
           'Book Quick For A Quick Tour',
           style: TextStyle(
-              fontSize: 13, fontWeight: FontWeight.bold, color: Colors.orange),
+              fontSize: 13, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         centerTitle: false,
         actions: [
@@ -180,7 +181,10 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                       ),
                       label: const Text(
                         'Book Tour At 20000ugx',
-                        style: TextStyle(fontSize: 10, color: Colors.blue),
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
 

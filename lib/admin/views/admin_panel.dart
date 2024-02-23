@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:saferent/admin/views/admin_control_panel.dart';
 import 'package:saferent/admin/views/admin_screen.dart';
 import 'package:saferent/security/agentformssubmission/providers/generate_admin_pin_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
@@ -61,8 +62,8 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
     if (_phoneEntered && _pinEntered) {
       _phoneController.clear();
       _pinController.clear();
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => AdminScreen()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const AdminControlPanel()));
     } else {
       setState(() {
         _errorMessage = 'Enter A verified Admin number For Access';
@@ -73,10 +74,12 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         title: const Text(
           'Administration Only',
-          style: TextStyle(fontSize: 12, color: Colors.red),
+          style: TextStyle(fontSize: 12, color: Colors.black),
         ),
       ),
       body: Center(

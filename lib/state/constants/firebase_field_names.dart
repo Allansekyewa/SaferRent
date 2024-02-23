@@ -24,9 +24,8 @@ class FirebaseFieldNames {
   static const loc = 'location';
   static const adminph = 'admin_phone';
   static const agentId = "agent_id";
-  static const companNam = 'Company_name';
-  static const handlerNam = 'Handlers_name';
-  static const handlersPh = 'handlers_phonr';
+  static const unitNo = 'unit_no.';
+  static const landlordRef = 'landlord_ref';
   static const descr = 'description';
   static const reaso = 'Payment_reason';
   static const clienNames = 'Client_names';

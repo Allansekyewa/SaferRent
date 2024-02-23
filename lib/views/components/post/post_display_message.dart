@@ -16,7 +16,7 @@ class PostDisplayMessage extends ConsumerWidget {
     ));
     return userInfoModel.when(data: (userInfoModel) {
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: RichTwoPartsText(
           leftPart: 'Unit Description',
           rightPart: post.description,
