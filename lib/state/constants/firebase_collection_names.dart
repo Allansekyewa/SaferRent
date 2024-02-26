@@ -14,7 +14,7 @@ class FirebaseCollectionName {
   static const verifyad = 'Verified_admin';
   static const tenantReg = 'Tenants';
   static const landLordReg = 'LandLords';
-
+  static const landlord = 'LandLord';
   static const passco = 'pass_codes';
 
   static const cart = 'carts';

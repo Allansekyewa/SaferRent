@@ -16,7 +16,7 @@ class TenantRegistration {
   final String ninNumber;
   final String location;
   final String unitNumber;
-  final double rentAMount;
+  final String rentAMount;
   final DateTime createdAt;
   TenantRegistration(
     Map<String, dynamic> json,

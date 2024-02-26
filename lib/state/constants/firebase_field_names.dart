@@ -33,6 +33,7 @@ class FirebaseFieldNames {
   static const isSubmit = 'Is_submitted';
   static const passCode = 'passCode';
   static const thumb = 'thumnail';
+  static const bankAcc = 'Account_No.';
 
   const FirebaseFieldNames._();
 }

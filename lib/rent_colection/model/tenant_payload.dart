@@ -14,7 +14,7 @@ class TenantsPayLoad extends MapView<String, dynamic> {
       required String location,
       required String unitNumber,
       required String ninNumber,
-      required double rentAmount,
+      required String rentAmount,
       required String email,
       required String landLordRef})
       : super({

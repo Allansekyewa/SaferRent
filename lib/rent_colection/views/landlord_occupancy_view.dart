@@ -1,36 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:saferent/views/components/constants/app_colors.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class LandLordOccupancy extends ConsumerStatefulWidget {
-  const LandLordOccupancy({super.key});
+  const LandLordOccupancy({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _LandLordOccupancyState();
+  // ignore: library_private_types_in_public_api
+  _LandlordOccupancyTabState createState() => _LandlordOccupancyTabState();
 }
 
-class _LandLordOccupancyState extends ConsumerState<LandLordOccupancy> {
+class _LandlordOccupancyTabState extends ConsumerState<LandLordOccupancy> {
+  late List<OccupancyStatusData> data;
+
+  @override
+  void initState() {
+    super.initState();
+    data = [
+      OccupancyStatusData('Taken', 7, Colors.green),
+      OccupancyStatusData('Pending', 5, Colors.red),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-            child: Column(
-          children: [
-            Divider(
-              color: Colors.blue,
-            ),
-            Text(
-              "Occuapancy will help you in tracking the number of units you have in difffernt Locations More so the taken ones the enpty ones in real time",
-              style: TextStyle(fontSize: 11, color: Colors.red),
-            ),
-            Divider(
-              color: Colors.blue,
-            ),
-          ],
-        )),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.butttonColor,
+        body: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 1),
+              SfCircularChart(
+                legend: const Legend(isVisible: true),
+                series: <CircularSeries>[
+                  PieSeries<OccupancyStatusData, String>(
+                    dataSource: data,
+                    xValueMapper: (OccupancyStatusData status, _) =>
+                        status.status,
+                    yValueMapper: (OccupancyStatusData status, _) =>
+                        status.count,
+                    pointColorMapper: (OccupancyStatusData status, _) =>
+                        status.color,
+                    dataLabelSettings: const DataLabelSettings(isVisible: true),
+                  )
+                ],
+              ),
+              const SizedBox(height: 20),
+              // TODO: Add columns for paid, pending, and defaulted tenants
+            ],
+          ),
+        ),
       ),
     );
   }
+}
+
+class OccupancyStatusData {
+  final String status;
+  final int count;
+  final Color color;
+
+  OccupancyStatusData(this.status, this.count, this.color);
 }

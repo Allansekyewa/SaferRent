@@ -9,14 +9,15 @@ class PostDateView extends StatelessWidget {
   Widget build(BuildContext context) {
     final formattedTimeAgo = timeago.format(
       dateTime,
-      locale: 'en_long',
+      locale: 'en',
     ); // Use 'en_short' for English locale
 
     return Padding(
       padding: const EdgeInsets.only(left: 4.0),
       child: Text(
         formattedTimeAgo,
-        style: const TextStyle(fontSize: 12, color: Colors.blue),
+        style: const TextStyle(
+            fontSize: 10, color: Colors.green, fontWeight: FontWeight.bold),
       ),
     );
   }

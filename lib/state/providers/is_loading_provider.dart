@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:saferent/rent_colection/providers/submit_landlord_provider.dart';
 import 'package:saferent/rent_colection/providers/sunmitTenant_provider.dart';
 
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
@@ -23,6 +24,7 @@ final isLoadingProvider = Provider<bool>(
     final isGeneratePin = ref.watch(generatePinProvider);
     final isSubmitTenant = ref.watch(submitTenantProvider);
     final isSavingAdmin = ref.watch(verifyAdminProvider);
+    final isSubmitLandlord = ref.watch(submitLandlordProvider);
 
     return authState.isLoading ||
         isUploadingImage ||
@@ -33,6 +35,7 @@ final isLoadingProvider = Provider<bool>(
         isVerifyingAgent ||
         isGeneratePin ||
         isSavingAdmin ||
-        isSubmitTenant;
+        isSubmitTenant ||
+        isSubmitLandlord;
   },
 );

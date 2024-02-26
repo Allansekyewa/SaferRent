@@ -24,7 +24,11 @@ class _TenantPaymentTabState extends ConsumerState<TenantPaymentTab> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Full Names :',
+                  'My Names :',
+                  style: TextStyle(fontSize: 12),
+                ),
+                Text(
+                  'LandLord Names:',
                   style: TextStyle(fontSize: 12),
                 ),
                 SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/rent_colection/providers/sunmitTenant_provider.dart';
+import 'package:saferent/state/auth/providers/user_id_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';
 
@@ -10,6 +11,7 @@ class TenantRegistrationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userId = ref.watch(userIdProvider);
     final formKey = GlobalKey<FormState>();
     final phoneController = useTextEditingController();
     final landlordRefController = useTextEditingController();
@@ -246,10 +248,16 @@ class TenantRegistrationPage extends HookConsumerWidget {
                     TextButton.icon(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
+                            if (userId == null) {
+                              // Handle the case where userId is null
+                              // For example, show an error message to the user
+
+                              return;
+                            }
                             final isSubm = await ref
                                 .read(submitTenantProvider.notifier)
                                 .submitTenant(
-                                    fromUserId: '',
+                                    fromUserId: userId,
                                     phoneNumber: phoneController.text,
                                     amount: rentAmountController.text,
                                     ninNumber: ninController.text,

@@ -6,6 +6,7 @@ import 'package:saferent/firebase_options.dart';
 import 'package:saferent/state/auth/providers/is_logged_in_provider.dart';
 import 'package:saferent/state/providers/is_loading_provider.dart';
 import 'package:saferent/views/components/loading/loading_screen.dart';
+import 'package:saferent/views/login/login.dart';
 import 'package:saferent/views/main/portal_main.dart';
 
 void main() async {
@@ -65,7 +66,7 @@ class SafeRents extends StatelessWidget {
           if (isLoggedIn) {
             return const PortalsMain();
           } else {
-            return const PortalsMain();
+            return const LoginPage();
           }
         },
       ),
