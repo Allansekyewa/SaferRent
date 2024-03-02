@@ -294,7 +294,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                                       makePayment();
                                     },
                                     style: TextButton.styleFrom(
-                                      primary: Colors.black,
+                                      foregroundColor: Colors.black,
                                     ),
                                     child: Text(
                                       'Pay 💵 ${totalPrice.toStringAsFixed(0)} Ugx',

@@ -88,7 +88,7 @@ class _PostVideoViewState extends State<PostVideoView> {
                       _controller.value.isPlaying
                           ? CupertinoIcons.pause_circle_fill
                           : CupertinoIcons.play_circle_fill,
-                      size: 20.0, // Adjust the size as needed.
+                      size: 20, // Adjust the size as needed.
                       color: _controller.value.isPlaying
                           ? Colors.green
                           : Colors.red, // Set the color to blue.

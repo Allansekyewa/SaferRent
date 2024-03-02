@@ -25,7 +25,9 @@ final postFeedbackProvider = StreamProvider.family
             .where(
               (doc) => !doc.metadata.hasPendingWrites,
             )
-            .map((document) => FeedBack(document.data(), id: document.id));
+            .map(
+              (document) => FeedBack(document.data(), id: document.id),
+            );
         final result = feedback.applySortingFrom(request);
         controller.sink.add(result);
       },

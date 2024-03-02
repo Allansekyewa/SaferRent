@@ -64,7 +64,7 @@ class _TextSplashState extends State<TextSplash>
                       'R',
                       style: TextStyle(
                         fontSize: 68,
-                        color: Colors.green,
+                        color: Colors.orange,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

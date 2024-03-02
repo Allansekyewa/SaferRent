@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:saferent/payments/view/reciept_view.dart';
-import 'package:saferent/rent_colection/views/reg_screen.dart';
+
 import 'package:saferent/security/pinsentry/views/agent_enter_pin_view.dart';
 import 'package:saferent/shoppingCart/providers/cart_management_provider.dart';
 import 'package:saferent/shoppingCart/views/shopping_cart_view.dart';
@@ -22,7 +22,25 @@ class PortalsMain extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _PortalsMainState();
 }
 
-class _PortalsMainState extends ConsumerState<PortalsMain> {
+class _PortalsMainState extends ConsumerState<PortalsMain>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2), // Adjust duration as needed
+    )..repeat(); // Repeats the animation indefinitely
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -31,25 +49,33 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
         appBar: AppBar(
           backgroundColor: Colors.orange,
           centerTitle: false,
-          title: const Row(
+          title: Row(
             children: [
-              Text(
+              const Text(
                 'Safe',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
               ),
-              Text(
-                'R',
-                style: TextStyle(
+              ScaleTransition(
+                scale: _controller,
+                child: const Text(
+                  'R',
+                  style: TextStyle(
                     fontSize: 30,
                     color: Colors.green,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              Text(
+              const Text(
                 'ents',
                 style: TextStyle(
                     color: Colors.red,
                     fontSize: 12,
                     fontWeight: FontWeight.bold),
+              ),
+              const Icon(
+                CupertinoIcons.map_pin_ellipse,
+                color: Colors.red,
               )
             ],
           ),
@@ -151,31 +177,6 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
             HomeView(),
             SearchView(),
           ],
-        ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.orange,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Center(
-              child: TextButton.icon(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const RentRegScreen()));
-                },
-                label: const Text(
-                  'Pay & Collect Rent',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 13,
-                  ),
-                ),
-                icon: const Icon(
-                  Icons.payments_sharp,
-                  color: Color.fromARGB(255, 185, 11, 185),
-                ),
-              ),
-            ),
-          ),
         ),
       ),
     );

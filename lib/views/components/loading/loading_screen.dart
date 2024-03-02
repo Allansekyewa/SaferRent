@@ -50,7 +50,7 @@ class LoadingScreen {
                 maxHeight: size.height * 0.5,
                 minWidth: size.width * 0.4),
             decoration: BoxDecoration(
-              color: AppColors.butttonColor,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Padding(

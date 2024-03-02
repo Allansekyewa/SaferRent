@@ -22,6 +22,11 @@ class CartProvider extends StateNotifier<Cart> {
 
   double get totalPrice {
     return state.items.fold(0, (total, current) => total + current.amount);
+
+    ///TODO
+    ///logic of how the first product added by retaina the default price value
+    ///each item added has todecrease starting from 5% ++ by 1
+    ///up to 10% for 10 tours
   }
 
   int get badgeCount {
@@ -43,7 +48,7 @@ class CartProvider extends StateNotifier<Cart> {
     }
 
     if (state.items.any((cartItem) => cartItem.postId == item.postId)) {
-      _showToastMessage("Tour already booked");
+      _showToastMessage("Tour Already Booked");
     } else {
       state = Cart(
         userId: state.userId,

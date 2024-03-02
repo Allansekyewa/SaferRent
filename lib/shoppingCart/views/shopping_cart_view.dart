@@ -17,6 +17,7 @@ class CartViewPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: AppBar(
+        backgroundColor: AppColors.butttonColor,
         title: const Text(
           'SafeRents Tours Basket',
           style: TextStyle(fontSize: 12, color: Colors.red),

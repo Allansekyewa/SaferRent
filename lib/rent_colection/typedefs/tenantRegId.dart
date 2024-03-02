@@ -1,1 +1,0 @@
-typedef TenantRegId = String;

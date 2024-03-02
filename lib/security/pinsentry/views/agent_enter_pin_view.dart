@@ -53,7 +53,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
       );
     } else {
       setState(() {
-        _errorText = "Phone Number is required";
+        _errorText = "SafeRents Ref Id required";
       });
     }
   }
@@ -142,7 +142,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
-                          CupertinoIcons.phone_arrow_up_right,
+                          CupertinoIcons.map_pin,
                           color: Colors.red,
                         ),
                         fillColor: Colors.white,
@@ -176,7 +176,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                             _navigateToCreateNewPost(context);
                           },
                           icon: const Icon(
-                            CupertinoIcons.forward_fill,
+                            CupertinoIcons.forward_end_alt_fill,
                             color: Colors.green,
                             size: 20,
                           ),
