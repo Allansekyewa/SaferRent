@@ -137,7 +137,9 @@ class _RecieptsViewState extends State<RecieptsView> {
                                     Text('Paid At: $paymentDate',
                                         style: const TextStyle(fontSize: 10)),
                                     Text(
-                                        'Hello Mr/Mrs $clientsName SafeRents Hails You For Trusting Us And doing bussiness with Us This reciept only works on on only one speicied portal.Get Back to Us about Your Property Tour Experience on 0761439068 or email  alsekx@gmail.com REGARDS 😎')
+                                        'Hello Mr/Mrs $clientsName SafeRents Hails You For Trusting Us And doing bussiness with Us This reciept only works on on only one speicied portal.Get Back to Us about Your Property Tour Experience on 0761439068 or email  alsekx@gmail.com REGARDS 😎'),
+                                    const Text(
+                                        'N.B once  a matched housed is foun un available another tour of your choice in the sane area will be granted to you to even your missing tour')
                                   ]),
                             ));
                       },

@@ -21,12 +21,25 @@ class CartProvider extends StateNotifier<Cart> {
   }
 
   double get totalPrice {
-    return state.items.fold(0, (total, current) => total + current.amount);
+    // Calculate the total price by summing up the amounts of all items
+    double total =
+        state.items.fold(0, (total, current) => total + current.amount);
 
-    ///TODO
-    ///logic of how the first product added by retaina the default price value
-    ///each item added has todecrease starting from 5% ++ by 1
-    ///up to 10% for 10 tours
+    // Apply custom pricing logic for the first 10 items
+    for (int i = 0; i < state.items.length; i++) {
+      if (i == 0) {
+        // Retain the default price for the first item
+        continue;
+      } else if (i <= 10) {
+        // Decrease the price by 5% for each subsequent item
+        total *= (1 - 0.05);
+      } else {
+        // Cap the discount at 10% for items beyond the 10th
+        total *= (1 - 0.10);
+      }
+    }
+
+    return total;
   }
 
   int get badgeCount {
