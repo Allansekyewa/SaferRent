@@ -17,10 +17,10 @@ class CartViewPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: AppBar(
-        backgroundColor: AppColors.butttonColor,
         title: const Text(
-          'SafeRents Tours Basket',
-          style: TextStyle(fontSize: 12, color: Colors.red),
+          ' Tour Bookings',
+          style: TextStyle(
+              fontSize: 12, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [
@@ -38,7 +38,9 @@ class CartViewPage extends ConsumerWidget {
       ),
       body: cart.items.isEmpty
           ? const Center(
-              child: NoCartAnimationWords(text: 'No Tours Booked Yet'))
+              child: NoCartAnimationWords(
+              text: 'No Tours Booked Yet',
+            ))
           : Column(
               children: [
                 Expanded(
@@ -48,7 +50,7 @@ class CartViewPage extends ConsumerWidget {
                       final item = cart.items[index];
                       return Card(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                           color: AppColors.butttonColor,
                           child: ListTile(
@@ -120,7 +122,7 @@ class CartViewPage extends ConsumerWidget {
                               size: 18,
                             ),
                             label: const Text(
-                              'Clear Cart',
+                              'Clear Bookings',
                               style:
                                   TextStyle(fontSize: 10, color: Colors.black),
                             ),

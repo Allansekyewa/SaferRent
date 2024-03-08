@@ -1,24 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saferent/state/posts/models/post.dart';
+import 'package:saferent/state/seenBy/models/seen_count_view.dart';
+import 'package:saferent/state/seenBy/models/seen_widget.dart';
+import 'package:saferent/views/components/post/post_date_view.dart';
 import 'package:saferent/views/components/post/post_details.dart';
 import 'package:saferent/views/components/post/post_thumbnail_view.dart';
 
 class PostSliverGridView extends StatelessWidget {
   final Iterable<Post> posts;
-  const PostSliverGridView({super.key, required this.posts});
+
+  const PostSliverGridView({Key? key, required this.posts}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, mainAxisSpacing: 2.0, crossAxisSpacing: 2.0),
+    return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: posts.length,
         (context, index) {
           final post = posts.elementAt(index);
-          return PostThumbNailView(
-            post: post,
-            onTapped: () {
+          return GestureDetector(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -26,8 +27,88 @@ class PostSliverGridView extends StatelessWidget {
                 ),
               );
             },
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: SizedBox(
+                height: 80,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(0.5),
+                        child: PostThumbNailView(
+                          post: post,
+                          onTapped: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    PostDetailsView(post: post),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      CupertinoIcons.location_circle_fill,
+                                      size: 14,
+                                      color: Colors.purple,
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Flexible(
+                                      child: Text(
+                                        post.description,
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                const Text(
+                                  'posted: ',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                PostDateView(dateTime: post.createdAt),
+                                const SizedBox(width: 20),
+                                SeenWidget(postId: post.userId),
+                                const SizedBox(width: 4),
+                                SeenCountView(postId: post.postId),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           );
         },
+        childCount: posts.length,
       ),
     );
   }

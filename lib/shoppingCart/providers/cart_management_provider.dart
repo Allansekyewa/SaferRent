@@ -25,7 +25,7 @@ class CartProvider extends StateNotifier<Cart> {
     double total =
         state.items.fold(0, (total, current) => total + current.amount);
 
-    // Apply custom pricing logic for the first 10 items
+    // Apply custom pricing logic for the first 1-10 items
     for (int i = 0; i < state.items.length; i++) {
       if (i == 0) {
         // Retain the default price for the first item

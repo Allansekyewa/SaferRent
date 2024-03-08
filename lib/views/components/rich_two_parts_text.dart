@@ -20,7 +20,7 @@ class RichTwoPartsText extends StatelessWidget {
                     color: Colors.red,
                     fontSize: 10)),
             TextSpan(
-              text: ' \n $rightPart',
+              text: ' \n$rightPart',
             )
           ]),
     );

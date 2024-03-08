@@ -16,6 +16,7 @@ class FirebaseCollectionName {
   static const landLordReg = 'LandLords';
   static const landlord = 'LandLord';
   static const passco = 'pass_codes';
+  static const seens = 'seenby';
 
   static const cart = 'carts';
   const FirebaseCollectionName._();

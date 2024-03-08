@@ -10,14 +10,14 @@ class Strings {
   static const people = 'People';
   static const delete = 'Delete';
   static const surelyDeleting =
-      "Are you sure you want to delete this from the pOrtaL . ?";
+      "Are you sure you want to delete this from SafeRents ?";
   static const logOut = 'Log Out';
   static const log = 'Log Out?';
   static const surelyLogginOut = 'Are you sure you want to log out ?';
   static const cancel = 'Cancel';
   static const viewedTh = 'Green Flagged This';
   static const check = 'Link Out This Saferent';
-  static const delpO = 'Delete pOrtaL . ?';
+  static const delpO = 'Delete Unit ?';
 
   const Strings._();
 }

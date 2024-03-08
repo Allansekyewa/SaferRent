@@ -67,7 +67,8 @@ dependencies:
   fluttertoast: ^8.2.4
   cached_network_image: ^3.1.0
   timeago: ^3.6.1
-  syncfusion_flutter_charts: ^24.2.7+1
+  flutter_launcher_icons: ^0.13.1
+
 
   
 
@@ -113,6 +114,7 @@ flutter:
     - assets/cart2.png
     - assets/animations/emptycart.json
     - assets/animations/addedtocart.json
+    - assets/saferentslogo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

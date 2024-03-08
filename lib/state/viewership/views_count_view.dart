@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/state/posts/typedefs/post_id.dart';
 import 'package:saferent/views/components/animations/error_animation_view.dart';
@@ -19,7 +18,9 @@ class ViewsCountView extends ConsumerWidget {
     );
     return viewsCount.when(data: (int viewsCount) {
       final personOrPeople = viewsCount == 1 ? Strings.person : Strings.people;
-      final viewsText = "$viewsCount $personOrPeople ${Strings.viewedTh} 😳";
+      final viewsText = viewsCount == 0
+          ? "$viewsCount $personOrPeople ${Strings.viewedTh} 😭"
+          : "$viewsCount $personOrPeople ${Strings.viewedTh} 😎";
       return Text(viewsText);
     }, error: (error, stackTrace) {
       return const ErrorAnimation();

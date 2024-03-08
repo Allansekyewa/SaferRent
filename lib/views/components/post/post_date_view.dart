@@ -17,7 +17,9 @@ class PostDateView extends StatelessWidget {
       child: Text(
         formattedTimeAgo,
         style: const TextStyle(
-            fontSize: 10, color: Colors.green, fontWeight: FontWeight.bold),
+          fontSize: 10,
+          color: Colors.green,
+        ),
       ),
     );
   }
