@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:saferent/admin/views/admin_control_panel.dart';
+
 import 'package:saferent/admin/views/admin_screen.dart';
+
 import 'package:saferent/security/agentformssubmission/providers/generate_admin_pin_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
 
@@ -53,7 +54,7 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
       );
     } else {
       setState(() {
-        _errorMessage = 'Phone Number required';
+        _errorMessage = 'Admin RefId Required';
       });
     }
   }
@@ -62,11 +63,11 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
     if (_phoneEntered && _pinEntered) {
       _phoneController.clear();
       _pinController.clear();
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const AdminControlPanel()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => AdminScreen()));
     } else {
       setState(() {
-        _errorMessage = 'Enter A verified Admin number For Access';
+        _errorMessage = 'Enter A verified Admin RefId For Access';
       });
     }
   }
@@ -124,16 +125,12 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
                         obscuringCharacter: '*',
                         decoration: InputDecoration(
                           labelText: 'Enter Admin PassCode1',
-                          prefixIcon: const Icon(
-                            CupertinoIcons.phone_down_circle,
-                            color: Colors.red,
-                          ),
                           suffixIcon: IconButton(
                             onPressed: () {
                               _generatedAdminPin(context);
                             },
                             icon: const Icon(
-                              Icons.cable_outlined,
+                              CupertinoIcons.arrow_2_circlepath_circle,
                               color: Colors.red,
                               size: 20,
                             ),
@@ -153,11 +150,6 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
                         obscureText: true,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              CupertinoIcons.pin,
-                              size: 14,
-                              color: Colors.red,
-                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),

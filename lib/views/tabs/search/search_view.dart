@@ -33,13 +33,6 @@ class SearchView extends HookConsumerWidget {
                     Radius.circular(5),
                   ),
                 ),
-                prefixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      CupertinoIcons.sort_down,
-                      size: 20,
-                      color: Colors.green,
-                    )),
                 labelText: Strings.enterSearch,
                 labelStyle: const TextStyle(fontSize: 10),
                 focusColor: Colors.black,

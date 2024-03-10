@@ -12,12 +12,14 @@ class SeenWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasViewed = ref.watch(hasSeenPostProvider(postId));
+    final hasViewed = ref.watch(
+      hasSeenPostProvider(postId),
+    );
 
     return hasViewed.when(
       data: (hasViewed) {
         return Icon(
-          hasViewed ? CupertinoIcons.eye_fill : CupertinoIcons.eye_slash,
+          hasViewed ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
           color: Colors.red,
           size: 14,
         );
@@ -28,8 +30,8 @@ class SeenWidget extends ConsumerWidget {
       loading: () {
         return const Center(
           child: CupertinoActivityIndicator(
-            color: Colors.black,
-            radius: 7,
+            color: Colors.red,
+            radius: 5,
           ),
         );
       },

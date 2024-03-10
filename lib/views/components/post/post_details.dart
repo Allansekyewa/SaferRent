@@ -42,7 +42,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
   Widget build(BuildContext context) {
     final request = RequestsForPostAndFeedback(
         postId: widget.post.postId,
-        limit: 20,
+        limit: 100,
         sortByCreatedAt: true,
         dateSorting: DateSorting.newestOnTop);
     //get actual post with its feedback

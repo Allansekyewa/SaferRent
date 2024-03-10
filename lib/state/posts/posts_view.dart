@@ -33,7 +33,7 @@ class PostsGridView extends StatelessWidget {
             );
           },
           child: SizedBox(
-            height: 110,
+            height: 90,
 
             // You can adjust this value as per your requirement
             child: Row(

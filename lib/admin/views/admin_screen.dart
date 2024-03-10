@@ -4,8 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
+import 'package:saferent/security/agentformssubmission/providers/agent_activity_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/verify_phone_number_provider.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
+
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';
 
 class AdminScreen extends HookConsumerWidget {
@@ -28,7 +29,12 @@ class AdminScreen extends HookConsumerWidget {
     final refController = useTextEditingController();
 
     return Scaffold(
-      backgroundColor: AppColors.butttonColor,
+      appBar: AppBar(
+        title: const Text(
+          'Agent Panel',
+          style: TextStyle(fontSize: 14, color: Colors.red),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -271,7 +277,7 @@ class AdminScreen extends HookConsumerWidget {
                 color: Colors.red,
               ),
               const Text(
-                'Enter A passcode to be used by the propertys seller "save passcode"',
+                'Enter A passcode to be used verified agent for access "save passcode"',
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -285,7 +291,7 @@ class AdminScreen extends HookConsumerWidget {
                     controller: passcodeController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
-                      labelText: 'Property passcode',
+                      labelText: 'Agent Ref Id  passcode',
                       labelStyle: TextStyle(fontSize: 10),
                       prefixIcon: Icon(
                         CupertinoIcons.printer_fill,
@@ -307,16 +313,31 @@ class AdminScreen extends HookConsumerWidget {
                   ),
                 ),
               ),
+              ElevatedButton.icon(
+                onPressed: () async {
+                  if (_passCodeFormKey.currentState!.validate()) {
+                    final isSave = await ref
+                        .read(agentActivityProvider.notifier)
+                        .saveAgentActivity(refId: passcodeController.text);
+                    if (isSave) {
+                      passcodeController.clear();
+                      dismissKeyboard();
+                    }
+                  }
+                },
+                label: const Text(
+                  'submit Agent RefId',
+                  style: TextStyle(fontSize: 12),
+                ),
+                icon: const Icon(
+                  CupertinoIcons.person_2_alt,
+                  size: 16,
+                  color: Colors.blue,
+                ),
+              ),
               const Divider(
                 color: Colors.red,
               ),
-              const Text(
-                'CLick on one of the fields below to enter data ',
-                style: TextStyle(fontSize: 10),
-              ),
-              const Divider(
-                color: Colors.red,
-              )
             ],
           ),
         ),

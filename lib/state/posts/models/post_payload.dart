@@ -34,6 +34,6 @@ class PostPayLoad extends MapView<String, dynamic> {
           PostKey.postSettings: {
             for (final postSettings in postSettings.entries)
               postSettings.key.storageKey: postSettings.value
-          }
+          },
         });
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:saferent/state/feedback/compact_feedback_tile.dart';
 import 'package:saferent/state/feedback/models/feedback.dart';
 
-
 class CompactFeedbackColumn extends StatelessWidget {
   final Iterable<FeedBack> feedbacks;
   const CompactFeedbackColumn({super.key, required this.feedbacks});

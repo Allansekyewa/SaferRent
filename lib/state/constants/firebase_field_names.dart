@@ -28,12 +28,12 @@ class FirebaseFieldNames {
   static const landlordRef = 'landlord_ref';
   static const descr = 'description';
   static const reaso = 'Payment_reason';
-  static const clienNames = 'Client_names';
-  static const type = 'property_type';
+
   static const isSubmit = 'Is_submitted';
   static const passCode = 'passCode';
   static const thumb = 'thumnail';
-  static const bankAcc = 'Account_No.';
+
+  static const agentref = 'agent_ref_id';
 
   const FirebaseFieldNames._();
 }

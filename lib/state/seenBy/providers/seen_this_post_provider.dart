@@ -15,7 +15,6 @@ final seenThisPostProvider = FutureProvider.family<bool, SeenByRequest>(
         .get();
 
     if (query.docs.isEmpty) {
-      // Mark the post as seen
       final see = SeenBy(
           postId: request.postId, seenby: request.seenby, date: DateTime.now());
       await FirebaseFirestore.instance
@@ -23,7 +22,6 @@ final seenThisPostProvider = FutureProvider.family<bool, SeenByRequest>(
           .add(see);
       return true;
     } else {
-      // Post already seen, no need to do anything
       return true;
     }
   } catch (_) {

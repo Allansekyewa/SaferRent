@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:saferent/security/agentformssubmission/providers/admin_verify_provider.dart';
+import 'package:saferent/security/agentformssubmission/providers/agent_activity_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/submit_agent_form_provider.dart';
 import 'package:saferent/security/agentformssubmission/providers/verify_phone_number_provider.dart';
 import 'package:saferent/security/pinsentry/providers/generate_pin_provider.dart';
@@ -20,7 +21,7 @@ final isLoadingProvider = Provider<bool>(
     final isSubmittingAgentForm = ref.watch(submitAgentFormProvider);
     final isVerifyingAgent = ref.watch(verifyPhoneProvider);
     final isGeneratePin = ref.watch(generatePinProvider);
-
+    final isAgentActivity = ref.watch(agentActivityProvider);
     final isSavingAdmin = ref.watch(verifyAdminProvider);
 
     return authState.isLoading ||
@@ -31,6 +32,7 @@ final isLoadingProvider = Provider<bool>(
         isSubmittingAgentForm ||
         isVerifyingAgent ||
         isGeneratePin ||
-        isSavingAdmin;
+        isSavingAdmin ||
+        isAgentActivity;
   },
 );

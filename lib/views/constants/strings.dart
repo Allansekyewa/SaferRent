@@ -13,7 +13,7 @@ class Strings {
   static const twitterSignUpUrl = 'https://www.twitter.com/signup';
   static const accLogIn = 'Log Into SafeRents With';
   static const feedback = 'Feedback';
-  static const writeFeedBack = 'Write Feedback Here';
+  static const writeFeedBack = 'Write Comments Here';
   static const postDetails = 'Post Details';
   static const post = 'Post';
   static const portaDes = 'Unit Description';

@@ -43,7 +43,10 @@ class PostThumbNailView extends ConsumerWidget {
           radius: 7,
           color: Colors.red,
         ),
-        errorWidget: (context, url, error) => const Icon(Icons.network_check),
+        errorWidget: (context, url, error) => const Text(
+          'Connect Internet',
+          style: TextStyle(fontSize: 8, color: Colors.red),
+        ),
       ),
     );
   }

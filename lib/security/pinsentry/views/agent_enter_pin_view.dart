@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/admin/views/admin_panel.dart';
+import 'package:saferent/agentsactivity/views/agents%20_activity_view_page.dart';
 import 'package:saferent/security/agentformssubmission/view/agents_register_view.dart';
 import 'package:saferent/security/pinsentry/providers/generate_pin_provider.dart';
 import 'package:saferent/state/image_upload/helpers/image_picker_helpers.dart';
@@ -141,10 +142,6 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                       obscuringCharacter: '*',
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(
-                          CupertinoIcons.map_pin,
-                          color: Colors.red,
-                        ),
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -156,7 +153,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                             _generatePin(context);
                           },
                           icon: const Icon(
-                            Icons.cable,
+                            CupertinoIcons.arrow_2_circlepath_circle_fill,
                             color: Colors.red,
                             size: 20,
                           ),
@@ -181,11 +178,7 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                             size: 20,
                           ),
                         ),
-                        prefixIcon: const Icon(
-                          CupertinoIcons.pin_fill,
-                          size: 15,
-                          color: Colors.red,
-                        ),
+                       
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -222,6 +215,27 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                       label: const Text(
                         'Become Our Agent',
                         style: TextStyle(color: Colors.green, fontSize: 10),
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AgentsActivityPage(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        CupertinoIcons.person_2_square_stack,
+                        color: Colors.blue,
+                      ),
+                      label: const Text(
+                        "Agents Strictly",
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                     TextButton.icon(
