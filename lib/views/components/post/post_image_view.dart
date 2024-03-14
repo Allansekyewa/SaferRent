@@ -17,7 +17,7 @@ class PostImageView extends StatelessWidget {
           if (loadingProgress == null) return child;
           return const Center(
             child: CupertinoActivityIndicator(
-              color: Colors.black,
+              color: Colors.red,
               radius: 7,
             ),
           );

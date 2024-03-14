@@ -54,7 +54,10 @@ class FeedBAckTileView extends ConsumerWidget {
       return const ErrorAnimation();
     }), loading: () {
       return const Center(
-        child: CupertinoActivityIndicator(),
+        child: CupertinoActivityIndicator(
+          radius: 7,
+          color: Colors.red,
+        ),
       );
     });
   }

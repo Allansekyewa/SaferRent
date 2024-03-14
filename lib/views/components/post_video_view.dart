@@ -1,49 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saferent/state/posts/models/post.dart';
-
 import 'package:video_player/video_player.dart';
 
 class PostVideoView extends StatefulWidget {
-  final Post post;
-  const PostVideoView({required this.post, Key? key}) : super(key: key);
-
+  final Post p;
+  const PostVideoView({required this.p, Key? k}) : super(key: k);
   @override
   _PostVideoViewState createState() => _PostVideoViewState();
 }
 
 class _PostVideoViewState extends State<PostVideoView> {
-  late VideoPlayerController _controller;
-  bool _isVideoPlayerReady = false;
-  bool _showControls = true;
+  late VideoPlayerController _c;
+  bool _rz = false;
+  bool _sc = true;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        VideoPlayerController.networkUrl(Uri.parse(widget.post.fileUrl));
-    _controller.initialize().then((_) {
+    _c = VideoPlayerController.networkUrl(Uri.parse(widget.p.fileUrl));
+    _c.initialize().then((_) {
       setState(() {
-        _isVideoPlayerReady = true;
-        _controller.setLooping(false);
-        _controller.play();
+        _rz = true;
+        _c.setLooping(false);
+        _c.play();
       });
     });
-    _controller.addListener(() {
+    _c.addListener(() {
       setState(() {});
     });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _c.dispose();
     super.dispose();
   }
 
-  String formatDuration(Duration d) {
-    final minutes = d.inMinutes.toString().padLeft(2, '0');
-    final seconds = (d.inSeconds % 60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
+  String fd(Duration d) {
+    final m = d.inMinutes.toString().padLeft(2, '0');
+    final s = (d.inSeconds % 60).toString().padLeft(2, '0');
+    return '$m:$s';
   }
 
   @override
@@ -51,23 +48,23 @@ class _PostVideoViewState extends State<PostVideoView> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _showControls = !_showControls;
+          _sc = !_sc;
         });
       },
       child: Stack(
         children: <Widget>[
-          if (_isVideoPlayerReady)
+          if (_rz)
             AspectRatio(
-              aspectRatio: widget.post.aspectRatio,
-              child: VideoPlayer(_controller),
+              aspectRatio: widget.p.aspectRatio,
+              child: VideoPlayer(_c),
             )
           else
             const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                SizedBox(width: 15), // Adjust the size as needed.
+                SizedBox(width: 15),
                 CupertinoActivityIndicator(
-                  color: Colors.black,
+                  color: Colors.red,
                   radius: 5,
                 ),
                 SizedBox(width: 5),
@@ -75,7 +72,7 @@ class _PostVideoViewState extends State<PostVideoView> {
                     style: TextStyle(fontSize: 12, color: Colors.green)),
               ],
             ),
-          if (_showControls)
+          if (_sc)
             Positioned(
               bottom: 0,
               left: 0,
@@ -85,19 +82,15 @@ class _PostVideoViewState extends State<PostVideoView> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(
-                      _controller.value.isPlaying
+                      _c.value.isPlaying
                           ? CupertinoIcons.pause_circle_fill
                           : CupertinoIcons.play_circle_fill,
-                      size: 20, // Adjust the size as needed.
-                      color: _controller.value.isPlaying
-                          ? Colors.green
-                          : Colors.red, // Set the color to blue.
+                      size: 20,
+                      color: _c.value.isPlaying ? Colors.green : Colors.red,
                     ),
                     onPressed: () {
                       setState(() {
-                        _controller.value.isPlaying
-                            ? _controller.pause()
-                            : _controller.play();
+                        _c.value.isPlaying ? _c.pause() : _c.play();
                       });
                     },
                   ),
@@ -105,20 +98,18 @@ class _PostVideoViewState extends State<PostVideoView> {
                   Expanded(
                     child: SliderTheme(
                       data: SliderTheme.of(context).copyWith(
-                        trackHeight: 1, // Adjust the thickness as needed.
+                        trackHeight: 1,
                         thumbShape: const RoundSliderThumbShape(
                             enabledThumbRadius: 6.0),
                         thumbColor: Colors.red,
-                        // Adjust the size as needed.
                       ),
                       child: Slider(
-                        value: _controller.value.position.inSeconds.toDouble(),
+                        value: _c.value.position.inSeconds.toDouble(),
                         min: 0.0,
-                        max: _controller.value.duration.inSeconds.toDouble(),
-                        onChanged: (double value) {
+                        max: _c.value.duration.inSeconds.toDouble(),
+                        onChanged: (double v) {
                           setState(() {
-                            _controller
-                                .seekTo(Duration(seconds: value.toInt()));
+                            _c.seekTo(Duration(seconds: v.toInt()));
                           });
                         },
                       ),
@@ -126,7 +117,7 @@ class _PostVideoViewState extends State<PostVideoView> {
                   ),
                   const SizedBox(width: 1),
                   Text(
-                    '${formatDuration(_controller.value.position)} / ${formatDuration(_controller.value.duration)}',
+                    '${fd(_c.value.position)} / ${fd(_c.value.duration)}',
                     style: const TextStyle(
                       color: Colors.red,
                     ),

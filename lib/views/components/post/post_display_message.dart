@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/user_info/providers/user_info_model_providers.dart';
@@ -26,7 +27,10 @@ class PostDisplayMessage extends ConsumerWidget {
       return const ErrorAnimation();
     }, loading: () {
       return const Center(
-        child: CupertinoActivityIndicator(),
+        child: CupertinoActivityIndicator(
+          radius: 7,
+          color: Colors.red,
+        ),
       );
     });
   }

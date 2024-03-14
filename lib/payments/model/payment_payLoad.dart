@@ -20,7 +20,7 @@ class ProcessPaymentsPayload extends MapView<String, dynamic> {
       required String clientsName,
       required String reason})
       : super({
-          FirebaseFieldNames.clienNames: clientsName,
+          FirebaseFieldNames.clientNmaes: clientsName,
           FirebaseFieldNames.amount: amount,
           FirebaseFieldNames.paidAt: FieldValue.serverTimestamp(),
           FirebaseFieldNames.userId: fromUserId,

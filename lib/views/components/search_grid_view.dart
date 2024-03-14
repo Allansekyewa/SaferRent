@@ -21,7 +21,7 @@ class SearchGridView extends ConsumerWidget {
       );
     }
     final posts = ref.watch(
-      postsBysearchTermProvider(searchTerm),
+      a(searchTerm),
     );
     return posts.when(
       data: (posts) {

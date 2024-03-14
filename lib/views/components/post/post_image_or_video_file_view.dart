@@ -15,7 +15,7 @@ class PostImageOrVideo extends StatelessWidget {
         return PostImageView(post: post);
 
       case FileType.video:
-        return PostVideoView(post: post);
+        return PostVideoView(p: post);
       default:
         return const SizedBox();
     }

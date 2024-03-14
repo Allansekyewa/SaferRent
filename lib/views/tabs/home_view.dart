@@ -8,31 +8,31 @@ import 'package:saferent/views/components/animations/error_animation_view.dart';
 import 'package:saferent/views/constants/strings.dart';
 
 class HomeView extends ConsumerWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? k}) : super(key: k);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final posts = ref.watch(allPostsProvider);
+  Widget build(BuildContext context, WidgetRef rf) {
+    final p = rf.watch(allPostsProvider);
 
     return RefreshIndicator(
       onRefresh: () {
-        ref.refresh(allPostsProvider);
+        rf.refresh(allPostsProvider);
         return Future.delayed(
           const Duration(seconds: 1),
         );
       },
-      child: posts.when(
-        data: (posts) {
-          if (posts.isEmpty) {
+      child: p.when(
+        data: (px) {
+          if (px.isEmpty) {
             return const EmptyContentsAnimationzwords(
               text: Strings.noSafeRENTSYet,
             );
           } else {
             // Convert Iterable to List and sort
-            final sortedPosts = posts.toList()
+            final sPs = px.toList()
               ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
             return PostsGridView(
-              posts: sortedPosts,
+              p1x: sPs,
             );
           }
         },

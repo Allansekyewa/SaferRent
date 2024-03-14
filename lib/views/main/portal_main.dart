@@ -33,8 +33,10 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
               ),
               Text(
                 "Rents",
-                style:
-                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
               )
             ],
           ),

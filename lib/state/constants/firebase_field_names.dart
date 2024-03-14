@@ -28,7 +28,7 @@ class FirebaseFieldNames {
   static const landlordRef = 'landlord_ref';
   static const descr = 'description';
   static const reaso = 'Payment_reason';
-
+  static const clientNmaes = 'client_name';
   static const isSubmit = 'Is_submitted';
   static const passCode = 'passCode';
   static const thumb = 'thumnail';

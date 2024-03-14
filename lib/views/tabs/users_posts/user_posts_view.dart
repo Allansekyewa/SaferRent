@@ -33,7 +33,9 @@ class UserPostsView extends ConsumerWidget {
             // Convert Iterable to List and sort
             final sortedPosts = posts.toList()
               ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-            return PostsGridView(posts: sortedPosts);
+            return PostsGridView(
+              p1x: sortedPosts,
+            );
           }
         },
         loading: () => const CupertinoActivityIndicator(

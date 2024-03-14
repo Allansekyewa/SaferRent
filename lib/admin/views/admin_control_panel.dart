@@ -19,7 +19,7 @@ class _AdminControlPanelState extends ConsumerState<AgentActivityControlPanel> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.white,
           title: const Text(
             'Admin Control Panel',
             style: TextStyle(fontSize: 12),

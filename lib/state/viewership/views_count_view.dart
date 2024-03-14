@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:saferent/state/posts/typedefs/post_id.dart';
 import 'package:saferent/views/components/animations/error_animation_view.dart';
@@ -25,7 +26,10 @@ class ViewsCountView extends ConsumerWidget {
     }, error: (error, stackTrace) {
       return const ErrorAnimation();
     }, loading: () {
-      return const CupertinoActivityIndicator();
+      return const CupertinoActivityIndicator(
+        radius: 6,
+        color: Colors.red,
+      );
     });
   }
 }

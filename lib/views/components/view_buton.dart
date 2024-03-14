@@ -10,39 +10,34 @@ import 'package:saferent/views/providers/has_viewed_post_provider.dart';
 import 'package:saferent/views/providers/view_post_provider.dart';
 
 class ViewsButton extends ConsumerWidget {
-  final PostId postId;
-  const ViewsButton({required this.postId, super.key});
+  final PostId a;
+  const ViewsButton({required this.a, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final hasViewed = ref.watch(
-      hasViewedPostProvider(postId),
-    );
-    return hasViewed.when(data: (hasViewed) {
-      return IconButton(
-          onPressed: () {
-            final userId = ref.read(userIdProvider);
-            if (userId == null) {
-              return;
-            }
-            final viewershipRequest =
-                ViewershipRequest(postId: postId, viewedby: userId);
-            ref.read(viewedThisPostProvider(viewershipRequest));
-          },
-          icon: FaIcon(
-            hasViewed ? CupertinoIcons.flag_fill : CupertinoIcons.flag,
-            color: Colors.green,
-            size: 14,
-          ));
-    }, error: (error, stacktrace) {
-      return const ErrorAnimation();
-    }, loading: () {
-      return const Center(
-        child: CupertinoActivityIndicator(
-          color: Colors.black,
-          radius: 7,
-        ),
-      );
-    });
+  Widget build(BuildContext b, WidgetRef c) {
+    final d = c.watch(hasViewedPostProvider(a));
+    return d.when(
+        data: (e) {
+          return IconButton(
+            onPressed: () {
+              final f = c.read(userIdProvider);
+              if (f == null) return;
+              final g = ViewershipRequest(postId: a, viewedby: f);
+              c.read(viewedThisPostProvider(g));
+            },
+            icon: FaIcon(
+              e ? CupertinoIcons.flag_fill : CupertinoIcons.flag,
+              color: Colors.green,
+              size: 14,
+            ),
+          );
+        },
+        error: (h, i) => const ErrorAnimation(),
+        loading: () => const Center(
+              child: CupertinoActivityIndicator(
+                color: Colors.red,
+                radius: 7,
+              ),
+            ));
   }
 }

@@ -90,9 +90,9 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.white60,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.white38,
         title: const Text(
           "Enter Verified SAfeRents Ref Id For Access",
           style: TextStyle(fontSize: 12, color: Colors.black),
@@ -178,7 +178,6 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
                             size: 20,
                           ),
                         ),
-                       
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),

@@ -15,7 +15,7 @@ class CartViewPage extends ConsumerWidget {
     final cart = ref.watch(cartProvider);
 
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           ' Tour Bookings',
@@ -49,52 +49,53 @@ class CartViewPage extends ConsumerWidget {
                     itemBuilder: (context, index) {
                       final item = cart.items[index];
                       return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: AppColors.butttonColor,
+                        child: ListTile(
+                          leading: Container(
+                            height: 50,
+                            width: 50,
+                            child: const AddedToCart(),
                           ),
-                          color: AppColors.butttonColor,
-                          child: ListTile(
-                            leading: Container(
-                              height: 50,
-                              width: 50,
-                              child: const AddedToCart(),
-                            ),
-                            title: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    item.description!,
-                                    style: const TextStyle(
-                                        fontSize: 10,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'ugx ${item.amount.toStringAsFixed(0)}: Property Tour Fee',
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  item.description!,
                                   style: const TextStyle(
-                                      fontSize: 10, color: Colors.red),
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(
-                                CupertinoIcons.delete_solid,
-                                size: 15,
-                                color: Colors.purple,
                               ),
-                              onPressed: () {
-                                ref
-                                    .read(cartProvider.notifier)
-                                    .removeCartItem(item.postId);
-                              },
+                            ],
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'ugx ${item.amount.toStringAsFixed(0)}: Property Tour Fee',
+                                style: const TextStyle(
+                                    fontSize: 10, color: Colors.red),
+                              ),
+                            ],
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                              CupertinoIcons.delete_solid,
+                              size: 15,
+                              color: Colors.purple,
                             ),
-                          ));
+                            onPressed: () {
+                              ref
+                                  .read(cartProvider.notifier)
+                                  .removeCartItem(item.postId);
+                            },
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ),

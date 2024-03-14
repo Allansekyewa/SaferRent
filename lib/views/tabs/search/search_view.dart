@@ -7,25 +7,25 @@ import 'package:saferent/views/constants/strings.dart';
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';
 
 class SearchView extends HookConsumerWidget {
-  const SearchView({Key? key}) : super(key: key);
+  const SearchView({Key? k}) : super(key: k);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controlller = useTextEditingController();
+    final _c = useTextEditingController();
     final searchTerm = useState('');
     useEffect(() {
-      controlller.addListener(() {
-        searchTerm.value = controlller.text;
+      _c.addListener(() {
+        searchTerm.value = _c.text;
       });
       return () {};
-    }, [controlller]);
+    }, [_c]);
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              controller: controlller,
+              controller: _c,
               textInputAction: TextInputAction.search,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(
@@ -38,7 +38,7 @@ class SearchView extends HookConsumerWidget {
                 focusColor: Colors.black,
                 suffixIcon: IconButton(
                   onPressed: () {
-                    controlller.clear();
+                    _c.clear();
                     dismissKeyboard();
                   },
                   icon: const Icon(

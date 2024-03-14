@@ -6,38 +6,34 @@ import 'package:saferent/state/constants/firebase_collection_names.dart';
 import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/posts/typedefs/search_term.dart';
 
-final postsBysearchTermProvider =
-    StreamProvider.family.autoDispose<Iterable<Post>, SearchTerm>(
-  (ref, SearchTerm searchTerm) {
-    final controller = StreamController<Iterable<Post>>();
-    final sub = FirebaseFirestore.instance
-        .collection(FirebaseCollectionName.posts)
-        .snapshots()
-        .listen(
-      (snapshot) {
-        final posts = snapshot.docs
-            .map(
-          (doc) => Post(json: doc.data(), postId: doc.id),
-        )
-            .where(
-          (post) {
-            final descriptionWords = post.description.toLowerCase().split(' ');
-            final searchWords = searchTerm.toLowerCase().split(' ');
+final a = StreamProvider.family
+    .autoDispose<Iterable<Post>, SearchTerm>((ref, SearchTerm b) {
+  final c = StreamController<Iterable<Post>>();
+  final d = FirebaseFirestore.instance
+      .collection(FirebaseCollectionName.posts)
+      .snapshots()
+      .listen(
+    (snapshot) {
+      final e = snapshot.docs
+          .map(
+        (doc) => Post(json: doc.data(), postId: doc.id),
+      )
+          .where(
+        (post) {
+          final f = post.description.toLowerCase().split(' ');
+          final g = b.toLowerCase().split(' ');
 
-            // Check if all search words are present in the description
-            return searchWords.every((word) =>
-                descriptionWords.any((descWord) => descWord.startsWith(word)));
-          },
-        );
-        controller.sink.add(posts);
-      },
-    );
-    ref.onDispose(
-      () {
-        sub.cancel();
-        controller.close();
-      },
-    );
-    return controller.stream;
-  },
-);
+          return g.every((h) => f.any((i) => i.startsWith(h)));
+        },
+      );
+      c.sink.add(e);
+    },
+  );
+  ref.onDispose(
+    () {
+      d.cancel();
+      c.close();
+    },
+  );
+  return c.stream;
+});

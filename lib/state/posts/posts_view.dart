@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/seenBy/models/seen_count_view.dart';
 import 'package:saferent/state/seenBy/models/seen_widget.dart';
@@ -9,18 +10,18 @@ import 'package:saferent/views/components/post/post_details.dart';
 import 'package:saferent/views/components/post/post_thumbnail_view.dart';
 
 class PostsGridView extends StatelessWidget {
-  final Iterable<Post> posts;
-  const PostsGridView({Key? key, required this.posts}) : super(key: key);
+  final Iterable<Post> p1x;
+  const PostsGridView({Key? key, required this.p1x}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.all(2.0),
-      itemCount: posts.length,
+      itemCount: p1x.length,
       separatorBuilder: (context, index) =>
           const SizedBox(height: 4.0), // This adds space between posts
       itemBuilder: (context, index) {
-        final post = posts.elementAt(index);
+        final post = p1x.elementAt(index);
         return GestureDetector(
           onTap: () {
             Navigator.push(
@@ -88,6 +89,7 @@ class PostsGridView extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             const Text('Posted: ',
                                 style: TextStyle(
@@ -97,13 +99,15 @@ class PostsGridView extends StatelessWidget {
                             const SizedBox(
                               width: 3,
                             ),
-                            PostDateView(dateTime: post.createdAt),
+                            Flexible(
+                                flex: 1,
+                                child: PostDateView(dateTime: post.createdAt)),
                             const SizedBox(
-                              width: 10,
+                              width: 5,
                             ),
                             SeenWidget(postId: post.userId),
                             const SizedBox(
-                              width: 4,
+                              width: 2,
                             ),
                             SeenCountView(postId: post.postId)
                           ],

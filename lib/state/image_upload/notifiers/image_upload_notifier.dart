@@ -22,93 +22,81 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 
 class ImageUploadNotifier extends StateNotifier<IsLoading> {
   ImageUploadNotifier() : super(false);
-  set isLoading(bool value) => state = value;
-  Future<bool> upload({
-    required File file,
-    required FileType fileType,
-    required String description,
-    required Map<PostSettings, bool> postSettings,
-    required UserId userId,
+  set a(bool b) => state = b;
+  Future<bool> c({
+    required File d,
+    required FileType e,
+    required String f,
+    required Map<PostSettings, bool> g,
+    required UserId h,
   }) async {
-    isLoading = true;
-    //this contains all my thumbnaildata
-
-    late Uint8List thumbnailUint8List;
-    switch (fileType) {
+    a = true;
+    late Uint8List i;
+    switch (e) {
       case FileType.image:
-        //create thumbnail out of file
-        final fileAsImage = img.decodeImage(file.readAsBytesSync());
-        if (fileAsImage == null) {
-          isLoading = false;
+        final j = img.decodeImage(d.readAsBytesSync());
+        if (j == null) {
+          a = false;
           throw const CouldNotBuildThumbnailException();
         }
-        //create thumbnail
-        final thumbnail = img.copyResize(
-          fileAsImage,
+        final k = img.copyResize(
+          j,
           width: Constants.imageThumbnailWidth,
         );
-        final thumbnailData = img.encodeJpg(thumbnail);
-        thumbnailUint8List = Uint8List.fromList(thumbnailData);
+        final l = img.encodeJpg(k);
+        i = Uint8List.fromList(l);
         break;
       case FileType.video:
-        final thumb = await VideoThumbnail.thumbnailData(
-            video: file.path,
+        final m = await VideoThumbnail.thumbnailData(
+            video: d.path,
             imageFormat: ImageFormat.JPEG,
             maxHeight: Constants.videoThumbnailMaxHeight,
             quality: Constants.videoThumbnailQuality);
-        if (thumb == null) {
-          isLoading = false;
+        if (m == null) {
+          a = false;
           throw const CouldNotBuildThumbnailException();
         } else {
-          thumbnailUint8List = thumb;
+          i = m;
         }
         break;
     }
-    // calculate the aspect ratio
-    final thumbnailAspectRatio = await thumbnailUint8List.getAspectRatio();
-    //calculate reference
-    final fileName = const Uuid().v4();
-
-    //create references to the thumbnail and the image itself
-    final thumbnailRef = FirebaseStorage.instance
+    final n = await i.getAspectRatio();
+    final o = const Uuid().v4();
+    final p = FirebaseStorage.instance
         .ref()
-        .child(userId)
+        .child(h)
         .child(FirebaseCollectionName.thumbnails)
-        .child(fileName);
-    final originalFileRef = FirebaseStorage.instance
+        .child(o);
+    final q = FirebaseStorage.instance
         .ref()
-        .child(userId)
-        .child(fileType.collectionName)
-        .child(fileName);
+        .child(h)
+        .child(e.collectionName)
+        .child(o);
     try {
-      // upload the thumbnail
-      final thumbnailUploadTask =
-          await thumbnailRef.putData(thumbnailUint8List);
-      final thumbnailStorageId = thumbnailUploadTask.ref.name;
-      //upload the original file
-      final originalFileUploadTask = await originalFileRef.putFile(file);
-      final originalFileStorageId = originalFileUploadTask.ref.name;
-      //upload the post itself
-      final postPayLoad = PostPayLoad(
-        userId: userId,
-        description: description,
-        thumbnailurl: await thumbnailRef.getDownloadURL(),
-        fileUrl: await originalFileRef.getDownloadURL(),
-        fileType: fileType,
-        fileName: fileName,
-        thumbnailStorageId: thumbnailStorageId,
-        aspectRatio: thumbnailAspectRatio,
-        originalFileStorageId: originalFileStorageId,
-        postSettings: postSettings,
+      final r = await p.putData(i);
+      final s = r.ref.name;
+      final t = await q.putFile(d);
+      final u = t.ref.name;
+      final v = PostPayLoad(
+        userId: h,
+        description: f,
+        thumbnailurl: await p.getDownloadURL(),
+        fileUrl: await q.getDownloadURL(),
+        fileType: e,
+        fileName: o,
+        thumbnailStorageId: s,
+        aspectRatio: n,
+        originalFileStorageId: u,
+        postSettings: g,
       );
       await FirebaseFirestore.instance
           .collection(FirebaseCollectionName.posts)
-          .add(postPayLoad);
+          .add(v);
       return true;
     } catch (_) {
       return false;
     } finally {
-      isLoading = false;
+      a = false;
     }
   }
 }

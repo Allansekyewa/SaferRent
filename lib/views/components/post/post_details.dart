@@ -62,7 +62,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
     return Scaffold(
       backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.white30,
         title: const Text(
           'Book Quick For A Quick Tour',
           style: TextStyle(
@@ -142,7 +142,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                   children: [
                     //viewbutton if post allows views
                     if (postWithFeedback.post.allowviews)
-                      ViewsButton(postId: postId),
+                      ViewsButton(a: postId),
                     //feedback button if post allows feedback
                     if (postWithFeedback.post.allowfeedback)
                       IconButton(
@@ -180,7 +180,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                         size: 16,
                       ),
                       label: const Text(
-                        'Book Tour At 20000ugx',
+                        'Book Tour At 20000ug',
                         style: TextStyle(
                             fontSize: 10,
                             color: Colors.blue,

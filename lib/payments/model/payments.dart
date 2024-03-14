@@ -32,7 +32,7 @@ class Payments {
         fromUserId = json[FirebaseFieldNames.userId],
         onPostId = json[FirebaseFieldNames.postId],
         serviceProvider = json[FirebaseFieldNames.servicePro],
-        clientNames = json[FirebaseFieldNames.clienNames],
+        clientNames = json[FirebaseFieldNames.clientNmaes],
         reason = json[FirebaseFieldNames.reaso];
 
   @override

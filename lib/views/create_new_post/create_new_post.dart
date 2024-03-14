@@ -74,15 +74,14 @@ class _CreateNewPostState extends ConsumerState<CreateNewPost> {
                               return;
                             }
                             final description = postController.text;
-                            final isUploaded = await ref
-                                .read(imageUploadProvider.notifier)
-                                .upload(
-                                  file: widget.fileToPost,
-                                  fileType: widget.fileType,
-                                  description: description,
-                                  postSettings: postSettings,
-                                  userId: userId,
-                                );
+                            final isUploaded =
+                                await ref.read(imageUploadProvider.notifier).c(
+                                      d: widget.fileToPost,
+                                      e: widget.fileType,
+                                      f: description,
+                                      g: postSettings,
+                                      h: userId,
+                                    );
                             if (isUploaded && mounted) {
                               Navigator.of(context).pop();
                             }

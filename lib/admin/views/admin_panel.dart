@@ -75,9 +75,9 @@ class _AdminPanelPageState extends ConsumerState<AdminPanelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.white70,
         title: const Text(
           'Administration Only',
           style: TextStyle(fontSize: 12, color: Colors.black),
