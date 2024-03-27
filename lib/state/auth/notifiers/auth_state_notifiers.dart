@@ -38,21 +38,21 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     );
   }
 
-  Future<void> loginWithFacebook() async {
-    state = state.copiedWithIsloading(true);
-    final result = await _authenticator.loginWithFacebook();
-    final userId = _authenticator.userId;
-    if (result == AuthResult.successs && userId != null) {
-      await saveUserInfo(userId: userId);
-    }
-    state = AuthState(
-      result: result,
-      isLoading: false,
-      userId: _authenticator.userId,
-    );
-  }
+  // Future<void> loginWithFacebook() async {
+  //   state = state.copiedWithIsloading(true);
+  //   final result = await _authenticator.loginWithFacebook();
+  //   final userId = _authenticator.userId;
+  //   if (result == AuthResult.successs && userId != null) {
+  //     await saveUserInfo(userId: userId);
+  //   }
+  //   state = AuthState(
+  //     result: result,
+  //     isLoading: false,
+  //     userId: _authenticator.userId,
+  //   );
+  // }
 
-  ///TODO apple login but still lack packages and apple certificates
+  // ///TODO apple login but still lack packages and apple certificates
   // Future<void> loginWithApple() async {
   //   state = state.copiedWithIsloading(true);
   // }

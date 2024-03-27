@@ -19,6 +19,7 @@ class FirebaseCollectionName {
   static const seens = 'seenby';
   static const agentAct = 'agentsActivity';
   static const agentrefi = "agentRefId";
+  static const spaces = 'space_renter';
 
   static const cart = 'carts';
   const FirebaseCollectionName._();

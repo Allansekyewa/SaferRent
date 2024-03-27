@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import 'package:saferent/payments/view/reciept_view.dart';
 import 'package:saferent/security/pinsentry/views/agent_enter_pin_view.dart';
 import 'package:saferent/shoppingCart/views/shopping_cart_view.dart';
 import 'package:saferent/state/auth/providers/auth_state_providers.dart';
-
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/log_out_dialog.dart';
+import 'package:saferent/views/main/about_view.dart';
+
 import 'package:saferent/views/tabs/home_view.dart';
 import 'package:saferent/views/tabs/search/search_view.dart';
 
@@ -23,7 +23,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Row(
@@ -125,6 +125,15 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
+              Tab(
+                child: Text(
+                  'About',
+                  style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
             ],
           ),
         ),
@@ -132,6 +141,7 @@ class _PortalsMainState extends ConsumerState<PortalsMain> {
           children: [
             HomeView(),
             SearchView(),
+            AboutUs(),
           ],
         ),
       ),

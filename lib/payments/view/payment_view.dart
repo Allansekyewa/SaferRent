@@ -164,7 +164,6 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
     amountToPay = totalPrice;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white60,
         appBar: AppBar(
           backgroundColor: AppColors.butttonColor,
           title: const Text(
@@ -179,7 +178,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
             child: SingleChildScrollView(
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.purple),
+                  border: Border.all(color: Colors.transparent),
                   color: AppColors.butttonColor,
                   borderRadius: BorderRadius.circular(20.0),
                 ),

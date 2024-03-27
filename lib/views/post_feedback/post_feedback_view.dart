@@ -9,7 +9,6 @@ import 'package:saferent/state/feedback/providers/send_feedback_provider.dart';
 import 'package:saferent/state/posts/typedefs/post_id.dart';
 import 'package:saferent/views/components/animations/error_animation_view.dart';
 import 'package:saferent/views/components/animations/real_estate_view.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/components/feedback_feedback_tile.dart';
 import 'package:saferent/views/constants/strings.dart';
 import 'package:saferent/views/extensions/dismiss_keyboard.dart';

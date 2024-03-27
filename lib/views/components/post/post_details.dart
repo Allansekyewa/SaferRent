@@ -13,7 +13,7 @@ import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/posts/providers/delete_post_provider.dart';
 import 'package:saferent/state/viewership/views_count_view.dart';
 import 'package:saferent/views/components/animations/small_error.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
+
 import 'package:saferent/views/components/constants/strings.dart';
 import 'package:saferent/views/components/dialogs/alert_dialog_model.dart';
 import 'package:saferent/views/components/dialogs/delete_dialog.dart';
@@ -60,7 +60,6 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
     );
 
     return Scaffold(
-      backgroundColor: AppColors.butttonColor,
       appBar: AppBar(
         backgroundColor: Colors.white30,
         title: const Text(

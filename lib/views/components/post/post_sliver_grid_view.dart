@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/seenBy/models/seen_count_view.dart';
 import 'package:saferent/state/seenBy/models/seen_widget.dart';
@@ -56,14 +57,15 @@ class PostSliverGridView extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
-                          children: [
+                          children: <Widget>[
                             Expanded(
                               child: SingleChildScrollView(
                                 child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Icon(
-                                      CupertinoIcons.location_circle_fill,
-                                      size: 14,
+                                      CupertinoIcons.doc_text_search,
+                                      size: 12,
                                       color: Colors.purple,
                                     ),
                                     const SizedBox(width: 5),
@@ -82,7 +84,8 @@ class PostSliverGridView extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Row(
-                              children: [
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
                                 const Text(
                                   'posted: ',
                                   style: TextStyle(
@@ -91,8 +94,11 @@ class PostSliverGridView extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 5),
-                                PostDateView(dateTime: post.createdAt),
-                                const SizedBox(width: 20),
+                                Flexible(
+                                    flex: 1,
+                                    child:
+                                        PostDateView(dateTime: post.createdAt)),
+                                const SizedBox(width: 10),
                                 SeenWidget(postId: post.userId),
                                 const SizedBox(width: 4),
                                 SeenCountView(postId: post.postId),

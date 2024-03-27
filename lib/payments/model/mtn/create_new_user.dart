@@ -21,12 +21,11 @@ void main() async {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      (await response.stream.bytesToString());
     } else {
-      print(
-          'Request failed with status: ${response.statusCode}, ${response.reasonPhrase}');
+      ('Request failed with status: ${response.statusCode}, ${response.reasonPhrase}');
     }
   } catch (e) {
-    print('Error making the request: $e');
+    ('Error making the request: $e');
   }
 }

@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:saferent/state/posts/models/post.dart';
 import 'package:saferent/state/seenBy/models/seen_count_view.dart';
 import 'package:saferent/state/seenBy/models/seen_widget.dart';
-
 import 'package:saferent/views/components/post/post_date_view.dart';
 import 'package:saferent/views/components/post/post_details.dart';
 import 'package:saferent/views/components/post/post_thumbnail_view.dart';
@@ -67,26 +64,42 @@ class PostsGridView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Expanded(
-                          child: SingleChildScrollView(
-                            child: Row(children: <Widget>[
+                          child: Row(
+                            children: <Widget>[
                               const Icon(
-                                CupertinoIcons.location_circle_fill,
-                                size: 14,
-                                color: Colors.purple,
+                                Icons.maps_home_work_rounded,
+                                size: 12,
+                                color: Colors.pink,
                               ),
                               const SizedBox(width: 5),
-                              Flexible(
-                                child: Text(
-                                  post.description,
-                                  style: const TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
+                              Text(
+                                post.postLocation ?? "",
+                                style: const TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
                                 ),
                               ),
-                            ]),
+                            ],
                           ),
                         ),
+                        const SizedBox(height: 7),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.payment_sharp,
+                              size: 12,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              post.postPrice ?? "",
+                              style: const TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+
                         const SizedBox(height: 10),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +107,7 @@ class PostsGridView extends StatelessWidget {
                             const Text('Posted: ',
                                 style: TextStyle(
                                   fontSize: 10,
-                                  color: Colors.red,
+                                  color: Colors.pink,
                                 )),
                             const SizedBox(
                               width: 3,
@@ -103,11 +116,11 @@ class PostsGridView extends StatelessWidget {
                                 flex: 1,
                                 child: PostDateView(dateTime: post.createdAt)),
                             const SizedBox(
-                              width: 5,
+                              width: 7,
                             ),
                             SeenWidget(postId: post.userId),
                             const SizedBox(
-                              width: 2,
+                              width: 5,
                             ),
                             SeenCountView(postId: post.postId)
                           ],

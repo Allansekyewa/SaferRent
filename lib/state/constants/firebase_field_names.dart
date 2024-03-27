@@ -32,6 +32,8 @@ class FirebaseFieldNames {
   static const isSubmit = 'Is_submitted';
   static const passCode = 'passCode';
   static const thumb = 'thumnail';
+  static const type = 'space_type';
+  static const spaceId = 'space_id';
 
   static const agentref = 'agent_ref_id';
 

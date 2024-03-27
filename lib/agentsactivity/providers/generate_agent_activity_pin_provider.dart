@@ -21,7 +21,7 @@ final generateAgentsActPinProvider =
       throw ('Agent ref Id Not Found');
     }
   } catch (e) {
-    throw ('Not An Agent Please 😂😎 chill');
+    throw ('Not An Agent Please 😂😎😏 chill Bro');
   }
 });
 String generateAgentActPin() {

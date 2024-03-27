@@ -33,6 +33,7 @@ class Strings {
   static const agentsNo =
       'Verified Agents Content Page\nGet Verified To Access This Page';
   static const noFeedYet = 'Be The First To Comment';
+  static const searchM = 'Search Location For Matches';
 
   const Strings._();
 }

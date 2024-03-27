@@ -47,7 +47,7 @@ class FeedBAckTileView extends ConsumerWidget {
         ),
         subtitle: Text(
           feedback.feedback,
-          style: const TextStyle(color: Colors.purple, fontSize: 10),
+          style: const TextStyle(color: Colors.black, fontSize: 10),
         ),
       );
     }, error: ((error, stackTrace) {

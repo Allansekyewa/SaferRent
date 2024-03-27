@@ -29,7 +29,6 @@ void main() async {
 class SafeRents extends StatelessWidget {
   // Constructor for the Portal clasz
   const SafeRents({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

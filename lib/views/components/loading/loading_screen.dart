@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:saferent/views/components/constants/app_colors.dart';
+
 import 'package:saferent/views/components/constants/strings.dart';
 import 'package:saferent/views/components/loading/loading_screen_controller.dart';
 
@@ -48,10 +48,10 @@ class LoadingScreen {
             constraints: BoxConstraints(
                 maxWidth: size.width * 0.5,
                 maxHeight: size.height * 0.5,
-                minWidth: size.width * 0.4),
+                minWidth: size.width * 0.5),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),

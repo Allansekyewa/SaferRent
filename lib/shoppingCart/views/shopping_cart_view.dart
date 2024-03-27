@@ -18,7 +18,7 @@ class CartViewPage extends ConsumerWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          ' Tour Bookings',
+          ' Your Booked Tours',
           style: TextStyle(
               fontSize: 12, color: Colors.red, fontWeight: FontWeight.bold),
         ),
@@ -54,10 +54,10 @@ class CartViewPage extends ConsumerWidget {
                         ),
                         color: AppColors.butttonColor,
                         child: ListTile(
-                          leading: Container(
+                          leading: const SizedBox(
                             height: 50,
                             width: 50,
-                            child: const AddedToCart(),
+                            child: AddedToCart(),
                           ),
                           title: Row(
                             children: [

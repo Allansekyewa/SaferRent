@@ -7,6 +7,7 @@ import 'package:saferent/security/agentformssubmission/view/agents_register_view
 import 'package:saferent/security/pinsentry/providers/generate_pin_provider.dart';
 import 'package:saferent/state/image_upload/helpers/image_picker_helpers.dart';
 import 'package:saferent/state/image_upload/models/file_type.dart';
+
 import 'package:saferent/state/post_settings/providers/post_settings_provider.dart';
 import 'package:saferent/views/components/constants/app_colors.dart';
 import 'package:saferent/views/create_new_post/create_new_post.dart';
@@ -90,9 +91,9 @@ class _AgentEnterPinViewState extends ConsumerState<AgentEnterPinView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white60,
+      backgroundColor: Colors.orange,
       appBar: AppBar(
-        backgroundColor: Colors.white38,
+        backgroundColor: Colors.orange,
         title: const Text(
           "Enter Verified SAfeRents Ref Id For Access",
           style: TextStyle(fontSize: 12, color: Colors.black),

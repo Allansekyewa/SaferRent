@@ -8,6 +8,8 @@ import 'package:saferent/state/posts/models/post_key.dart';
 class Post {
   final String postId;
   final String userId;
+  final String? postLocation;
+  final String? postPrice;
   final DateTime createdAt;
   final String thumbnailUrl;
   final String description;
@@ -22,6 +24,8 @@ class Post {
     required this.postId,
     required Map<String, dynamic> json,
   })  : userId = json[PostKey.userId],
+        postLocation = json[PostKey.postLocaton] ?? '',
+        postPrice = json[PostKey.postPrice] ?? '',
         createdAt = (json[PostKey.createdAt] as Timestamp).toDate(),
         thumbnailUrl = json[PostKey.thumbnailUrl],
         fileUrl = json[PostKey.fileUrl],

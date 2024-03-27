@@ -1,6 +1,5 @@
 import 'dart:io' show File;
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image/image.dart' as img;
@@ -16,7 +15,6 @@ import 'package:saferent/state/image_upload/typedefs/is_loading.dart';
 import 'package:saferent/state/post_settings/models/post_settings.dart';
 import 'package:saferent/state/posts/models/post_payload.dart';
 import 'package:saferent/state/posts/typedefs/user_id.dart';
-
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 
@@ -27,6 +25,8 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
     required File d,
     required FileType e,
     required String f,
+    required String loc,
+    required String price,
     required Map<PostSettings, bool> g,
     required UserId h,
   }) async {
@@ -78,17 +78,18 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
       final t = await q.putFile(d);
       final u = t.ref.name;
       final v = PostPayLoad(
-        userId: h,
-        description: f,
-        thumbnailurl: await p.getDownloadURL(),
-        fileUrl: await q.getDownloadURL(),
-        fileType: e,
-        fileName: o,
-        thumbnailStorageId: s,
-        aspectRatio: n,
-        originalFileStorageId: u,
-        postSettings: g,
-      );
+          userId: h,
+          description: f,
+          thumbnailurl: await p.getDownloadURL(),
+          fileUrl: await q.getDownloadURL(),
+          fileType: e,
+          fileName: o,
+          thumbnailStorageId: s,
+          aspectRatio: n,
+          originalFileStorageId: u,
+          postSettings: g,
+          location: loc,
+          price: price);
       await FirebaseFirestore.instance
           .collection(FirebaseCollectionName.posts)
           .add(v);

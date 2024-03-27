@@ -16,10 +16,6 @@ final allPostsProvider = StreamProvider.autoDispose<Iterable<Post>>(
         .collection(
           FirebaseCollectionName.posts,
         )
-
-        ///TODO there was an orderby querry here that had to order posts by descending order
-        ///it was preventing the ui to render posts
-        ///will come back after in future
         .snapshots()
         .listen(
       (snapshots) {

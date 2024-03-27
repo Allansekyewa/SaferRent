@@ -30,12 +30,16 @@ class SearchView extends HookConsumerWidget {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(5),
+                    Radius.circular(15),
                   ),
                 ),
                 labelText: Strings.enterSearch,
                 labelStyle: const TextStyle(fontSize: 10),
                 focusColor: Colors.black,
+                prefixIcon: const Icon(
+                  CupertinoIcons.search,
+                  size: 15,
+                ),
                 suffixIcon: IconButton(
                   onPressed: () {
                     _c.clear();

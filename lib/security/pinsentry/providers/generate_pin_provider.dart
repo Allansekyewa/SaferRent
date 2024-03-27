@@ -24,7 +24,7 @@ final generateAndReturnPinProvider =
       throw ("Phone number not found in Firestore");
     }
   } catch (e) {
-    throw ("Not Authorized For This Service😉🤣");
+    throw ("Not Authorized For This Service😉🤣👊");
   }
 });
 

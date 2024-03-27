@@ -37,17 +37,16 @@ class PostThumbNailView extends ConsumerWidget {
         }
       },
       child: CachedNetworkImage(
-        imageUrl: post.thumbnailUrl,
-        fit: BoxFit.cover,
-        placeholder: (context, url) => const CupertinoActivityIndicator(
-          radius: 7,
-          color: Colors.red,
-        ),
-        errorWidget: (context, url, error) => const Text(
-          'Connect Internet',
-          style: TextStyle(fontSize: 8, color: Colors.red),
-        ),
-      ),
+          imageUrl: post.thumbnailUrl,
+          fit: BoxFit.cover,
+          placeholder: (context, url) => const CupertinoActivityIndicator(
+                radius: 7,
+                color: Colors.red,
+              ),
+          errorWidget: (context, url, error) => const Text(
+                'No Internet Connection',
+                style: TextStyle(fontSize: 10),
+              )),
     );
   }
 }

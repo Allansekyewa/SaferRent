@@ -12,6 +12,8 @@ class PostPayLoad extends MapView<String, dynamic> {
   PostPayLoad(
       {required UserId userId,
       required String thumbnailurl,
+      required String location,
+      required String price,
       required String fileUrl,
       required FileType fileType,
       required String description,
@@ -31,6 +33,8 @@ class PostPayLoad extends MapView<String, dynamic> {
           PostKey.fileName: fileName,
           PostKey.originalFileStorageId: originalFileStorageId,
           PostKey.thumbnailUrl: thumbnailurl,
+          PostKey.postLocaton: location,
+          PostKey.postPrice: price,
           PostKey.postSettings: {
             for (final postSettings in postSettings.entries)
               postSettings.key.storageKey: postSettings.value

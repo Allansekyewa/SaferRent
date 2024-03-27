@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-
 import 'package:riverpod/riverpod.dart';
 import 'package:saferent/state/post_settings/models/post_settings.dart';
 

@@ -14,6 +14,8 @@ class PostKey {
   static const postSettings = 'post_settings';
   static const thumbnailStorageId = 'thumbnail_storage_id';
   static const originalFileStorageId = 'original_file_storage_id';
+  static const postLocaton = 'location';
+  static const postPrice = 'price';
 
   const PostKey._();
 }
