@@ -25,17 +25,12 @@ void main() async {
   );
 }
 
-// Main Portal class that extends StatelessWidget
 class SafeRents extends StatelessWidget {
-  // Constructor for the Portal clasz
   const SafeRents({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      /// Define the app's theme
-      /// how the app appears more so in color tuning
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
@@ -44,14 +39,11 @@ class SafeRents extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      // Define the app's home page based on user authentication status
       home: Consumer(
         builder: (context, ref, child) {
-          // Listen for changes in isLoadingProvider
           ref.listen<bool>(
             isLoadingProvider,
             (_, isLoading) {
-              // Show or hide the loading screen based on the isLoading status
               if (isLoading) {
                 LoadingScreen.instance().show(context: context);
               } else {
@@ -59,9 +51,9 @@ class SafeRents extends StatelessWidget {
               }
             },
           );
-          // Check the isLoggedInProvider for the user's authentication status
+
           final isLoggedIn = ref.watch(isLoggedInProvider);
-          // Return the appropriate widget based on authentication status
+
           if (isLoggedIn) {
             return const PortalsMain();
           } else {
